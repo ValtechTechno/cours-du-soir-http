@@ -39,6 +39,9 @@
         a { color: #654; text-decoration: underline; border-bottom:  none; }
         li { font-size: 1.4em; padding: 5px 0; }
         abbr { border-bottom: 1px dashed #654; }
+        section { margin: 2em 2em 0 2em }
+        ol li { list-style: decimal inside; }
+        ul li { list-style: square outside; }
     </style>
   </head>
   <body>
@@ -88,15 +91,14 @@
           <div class="slide" id="summary-slide">
               <style>
                   #summary-slide ol { column-count: 2; }
-                  #summary-slide ol li { list-style: decimal inside; }
               </style>
               <section>
                   <h2>Sommaire</h2>
                   <ol>
                       <li>La petite histoire...</li>
                       <li>Dans les grandes lignes</li>
-                      <li>Versions : 0.9, 1.0 &amp; 1.1</li>
-                      <li>Verbes : GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS</li>
+                      <li>Versions</li>
+                      <li>Verbes</li>
                       <li>URI, URL, connections</li>
                       <li>Négotiation de contenu</li>
                       <li>Requêtes conditionnelles</li>
@@ -129,12 +131,33 @@
               </section>
           </div>
 
-          <div class="slide" id="overview-slide">
+          <div class="slide" id="overview-model-slide">
               <section>
-              <h2>Dans les grandes lignes</h2>
-                <p class="center">
-                <img src="https://docs.google.com/drawings/pub?id=13JohKX0LOXs74gu-DB8gKaSY_OIB050vX14_lKBp_HQ&w=574&h=448" title="Couches réseau" />
-                </p>
+              <h2>Dans les grandes lignes : modèle</h2>
+                <p class="center"><img src="https://docs.google.com/drawings/pub?id=13JohKX0LOXs74gu-DB8gKaSY_OIB050vX14_lKBp_HQ&w=574&h=448" title="Couches réseau" /></p>
+              </section>
+          </div>
+
+          <div class="slide" id="overview-example-slide">
+              <section>
+              <h2>Dans les grandes lignes : exemple</h2>
+              <pre>➜  ~  telnet www.google.fr 80 
+Trying 209.85.148.99...
+Connected to www.l.google.com.
+Escape character is '^]'.
+GET / HTTP/1.1
+Host: www.google.fr
+
+HTTP/1.1 200 OK
+Date: Fri, 02 Dec 2011 15:03:11 GMT
+Expires: -1
+Cache-Control: private, max-age=0
+Content-Type: text/html; charset=ISO-8859-1
+Content-Length: 4386
+Set-Cookie: ... 
+Server: gws
+
+&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;...</pre>
               </section>
           </div>
 
