@@ -34,6 +34,10 @@
     <link href="css/sand.css" class="theme" rel="stylesheet" />
     <link href="css/sea_wave.css" class="theme" rel="stylesheet" />
     <link href="css/default.css" class="theme" rel="stylesheet" media="screen" />
+    <style>
+        .slide h2 { font-size: 2em; }
+        a { color: #665544; text-decoration: underline; border-bottom:  none; }
+    </style>
   </head>
   <body>
     <div class="presentation">
@@ -78,26 +82,53 @@
             }
             #title-slide h1 {
               letter-spacing: -2px;
-              font-size: 96px;
+              font-size: 70px;
             }
             #title-slide h2 {
-              margin-top: -5px;
-              font-size: 40px;
-              letter-spacing: -1px;
+              margin-top: 1em;
+              font-size: 36px;
+              color: #665544;
             }
           </style>
           <section class="middle">
             <hgroup>
-              <h1>HTTP - Hypertext Transfer Protocol</h1>
-              <h2>Grégory Paul <a href="https://twitter.com/@paulgreg" title="Mon compte twitter">@paulgreg</a></h2>
+              <h1>HTTP : Hypertext Transfer Protocol</h1>
+              <h2>Grégory Paul - <a href="https://twitter.com/@paulgreg" title="Mon compte twitter">@paulgreg</a></h2>
             </hgroup>
           </section>
         </div>
 
         <div class="slide" id="summary-slide">
+            <style>
+                #summary-slide ol { column-count: 2; }
+                #summary-slide ol li { list-style: decimal inside; font-size: 1.4em; padding: 5px 0; }
+          </style>
           <section>
-				<h2>Title</h2>
-				<p>I'm an empty slide to copy and paste</p>
+				<h2>Sommaire</h2>
+                <ol>
+                    <li>La petite histoire...</li>
+                    <li>HTTP dans la pile réseau</li>
+                    <li>Versions : 0.9, 1.0 &amp; 1.1</li>
+                    <li>Verbes : GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS</li>
+                    <li>URI, URL, connections</li>
+                    <li>Négotiation de contenu</li>
+                    <li>Requêtes conditionnelles</li>
+                    <li>Plage de réponse et réponse partielle</li>
+                    <li>Entêtes client, serveur</li>
+                    <li>Gestion du cache</li>
+                    <li>Authentification</li>
+                    <li>SSL/TLS</li>
+                    <li>Extensions : WebDAV,...</li>
+                    <li>SPDY</li>
+                    <li>Outils</li>
+                </ol>
+          </section>
+        </div>
+
+        <div class="slide" id="story-slide">
+          <section>
+				<h2>La petite histoire...</h2>
+				<p></p>
           </section>
         </div>
 
