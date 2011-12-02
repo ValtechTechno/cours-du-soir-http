@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--
+  Slides from Google (slides.html5rocks.com) cleaned up for new presentations
+
+  ---------------------------------------------------------------
+
+  Copyright 2011 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Chrome DevRel Team (chrome-devrel@googlegroups.com)
+                 Alex Russell (slightlyoff@chromium.org)
+                 Brad Neuberg
+-->
+<html manifest="cache.appcache">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+    <title>Présentation de HTTP</title>
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono" rel="stylesheet" type="text/css" />
+    <link id="prettify-link" href="src/prettify/prettify.css" rel="stylesheet" disabled />
+    <link href="css/moon.css" class="theme" rel="stylesheet" />
+    <link href="css/sand.css" class="theme" rel="stylesheet" />
+    <link href="css/sea_wave.css" class="theme" rel="stylesheet" />
+    <link href="css/default.css" class="theme" rel="stylesheet" media="screen" />
+  </head>
+  <body>
+    <div class="presentation">
+      <div id="presentation-counter">Loading...</div>
+      <div class="slides">
+        <div class="slide" id="landing-slide">
+          <style>
+            #landing-slide p {
+              font-size: 35px;
+            }
+            p#disclaimer-message {
+              font-size: 20px;
+            }
+          </style>
+          <section class="middle">
+            <p>Cette présentation est un site en HTML5</p>
+            <p>Appuyez sur <span id="left-init-key" class="key">&rarr;</span> pour avancer.</p>
+          </section>
+        </div>
+
+        <div class="slide" id="controls-slide">
+          <style>
+            #controls-slide li, #controls-slide p {
+              font-size: 35px;
+            }
+          </style>
+          <section>
+            <p>Contrôles :</p>
+            <ul>
+              <li><span class="key">&larr;</span> et <span class="key">&rarr;</span> pour vous déplacer.</li>
+              <li><span class="key">Ctrl/Command</span> et <span class="key">+</span> ou <span class="key">-</span> pour zoomer.</li>
+              <li><span class="key">T</span> pour changer le thème.</li>
+              <li><span class="key">H</span> pour changer le surlignage de la syntaxe.</li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="slide" id="title-slide">
+          <style>
+            #title-slide h1, #title-slide h2 {
+              color: black;
+            }
+            #title-slide h1 {
+              letter-spacing: -2px;
+              font-size: 96px;
+            }
+            #title-slide h2 {
+              margin-top: -5px;
+              font-size: 40px;
+              letter-spacing: -1px;
+            }
+          </style>
+          <section class="middle">
+            <hgroup>
+              <h1>HTTP - Hypertext Transfer Protocol</h1>
+              <h2>Grégory Paul <a href="https://twitter.com/@paulgreg" title="Mon compte twitter">@paulgreg</a></h2>
+            </hgroup>
+          </section>
+        </div>
+
+        <div class="slide" id="summary-slide">
+          <section>
+				<h2>Title</h2>
+				<p>I'm an empty slide to copy and paste</p>
+          </section>
+        </div>
+
+        <!-- to copy / paste -->
+        <div class="slide" id="sample-slide">
+          <section>
+				<h2>Title</h2>
+				<p>I'm an empty slide to copy and paste</p>
+          </section>
+        </div>
+
+      </div> <!-- slides -->
+
+    </div> <!-- presentation -->
+
+    <script src="js/slides.js"></script>
+    <!--[if lt IE 9]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">
+    </script>
+    <script>CFInstall.check({ mode: "overlay" });</script>
+    <![endif]-->
+    <script src="src/prettify/prettify.js" onload="prettyPrint();" defer></script>
+    <script src="js/slides.js"></script>
+    <script src="js/cache.js"></script>
+  </body>
+</html>
