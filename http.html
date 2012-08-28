@@ -1,143 +1,140 @@
 <!DOCTYPE html>
-<!--
-  Slides from Google (slides.html5rocks.com) cleaned up for new presentations
+<!-- Slides from Google (slides.html5rocks.com) cleaned up for new presentations
+Copyright 2011 Google Inc.
 
-  --------------------------------------------------------------
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-  Copyright 2011 Google Inc.
+http://www.apache.org/licenses/LICENSE-2.0
 
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
-     http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
-
-  Original slides: Marcin Wichary (mwichary@google.com)
-  Modifications: Chrome DevRel Team (chrome-devrel@googlegroups.com)
-                 Alex Russell (slightlyoff@chromium.org)
-                 Brad Neuberg
+Original slides: Marcin Wichary (mwichary@google.com)
+Modifications: Chrome DevRel Team (chrome-devrel@googlegroups.com)
+Alex Russell (slightlyoff@chromium.org)
+Brad Neuberg
 -->
 <html manifest="cache.appcache">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
-    <title>Présentation de HTTP</title>
-    <link href="http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono" rel="stylesheet" type="text/css" />
-    <link id="prettify-link" href="src/prettify/prettify.css" rel="stylesheet" disabled />
-    <link href="css/moon.css" class="theme" rel="stylesheet" />
-    <link href="css/sand.css" class="theme" rel="stylesheet" />
-    <link href="css/sea_wave.css" class="theme" rel="stylesheet" />
-    <link href="css/default.css" class="theme" rel="stylesheet" media="screen" />
-    <style>
-        .slide h2 { font-size: 2em; }
-        a { color: #654; text-decoration: underline; border-bottom:  none; }
-        li { font-size: 1.4em; padding: 5px 0; }
-        abbr { border-bottom: 1px dashed #654; }
-        section { margin: 2em 2em 0 2em }
-        ol li { list-style: decimal inside; }
-        ul li { list-style: square outside; }
-    </style>
-  </head>
-  <body>
-    <div class="presentation">
-      <div id="presentation-counter">Loading...</div>
-      <div class="slides">
-          <div class="slide" id="landing-slide">
-              <style>
-                  #landing-slide p { font-size: 35px; }
-                  p#disclaimer-message { font-size: 20px; }
-              </style>
-              <section class="middle">
-                  <p>Cette présentation est un site en HTML5</p>
-                  <p>Appuyez sur <span id="left-init-key" class="key">&rarr;</span> pour avancer.</p>
-              </section>
-          </div>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+        <title>Présentation de HTTP</title>
+        <link href="http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono" rel="stylesheet" type="text/css" />
+        <link id="prettify-link" href="src/prettify/prettify.css" rel="stylesheet" disabled />
+        <link href="css/moon.css" class="theme" rel="stylesheet" />
+        <link href="css/sand.css" class="theme" rel="stylesheet" />
+        <link href="css/sea_wave.css" class="theme" rel="stylesheet" />
+        <link href="css/default.css" class="theme" rel="stylesheet" media="screen" />
+        <style>
+            .slide h2 { font-size: 2em; }
+            a { color: #654; text-decoration: underline; border-bottom:  none; }
+            li { font-size: 1.4em; padding: 5px 0; }
+            abbr { border-bottom: 1px dashed #654; }
+            section { margin: 2em 2em 0 2em }
+            ol li { list-style: decimal inside; }
+            ul li { list-style: square outside; }
+        </style>
+    </head>
+    <body>
+        <div class="presentation">
+            <div id="presentation-counter">Loading...</div>
+            <div class="slides">
+                <div class="slide" id="landing-slide">
+                    <style>
+                        #landing-slide p { font-size: 35px; }
+                        p#disclaimer-message { font-size: 20px; }
+                    </style>
+                    <section class="middle">
+                    <p>Cette présentation est un site en HTML5</p>
+                    <p>Appuyez sur <span id="left-init-key" class="key">&rarr;</span> pour avancer.</p>
+                    </section>
+                </div>
 
-          <div class="slide" id="controls-slide">
-              <style>
-                  #controls-slide li, #controls-slide p { font-size: 35px; }
-              </style>
-              <section>
-                  <p>Contrôles :</p>
-                  <ul>
-                      <li><span class="key">&larr;</span> et <span class="key">&rarr;</span> pour vous déplacer.</li>
-                      <li><span class="key">Ctrl/Command</span> et <span class="key">+</span> ou <span class="key">-</span> pour zoomer.</li>
-                      <li><span class="key">T</span> pour changer le thème.</li>
-                      <li><span class="key">H</span> pour changer le surlignage de la syntaxe.</li>
-                  </ul>
-              </section>
-          </div>
+                <div class="slide" id="controls-slide">
+                    <style>
+                        #controls-slide li, #controls-slide p { font-size: 35px; }
+                    </style>
+                    <section>
+                    <p>Contrôles :</p>
+                    <ul>
+                        <li><span class="key">&larr;</span> et <span class="key">&rarr;</span> pour vous déplacer.</li>
+                        <li><span class="key">Ctrl/Command</span> et <span class="key">+</span> ou <span class="key">-</span> pour zoomer.</li>
+                        <li><span class="key">T</span> pour changer le thème.</li>
+                        <li><span class="key">H</span> pour changer le surlignage de la syntaxe.</li>
+                    </ul>
+                    </section>
+                </div>
 
-          <div class="slide" id="title-slide">
-              <style>
-                  #title-slide h1, #title-slide h2 { color: black; }
-                  #title-slide h1 { letter-spacing: -2px; font-size: 70px; }
-                  #title-slide h2 { margin-top: 1em; font-size: 36px; color: #665544; }
-              </style>
-              <section class="middle">
-                  <hgroup>
-                      <h1>HTTP</h1>
-                      <h2>Hypertext Transfer Protocol</h2>
-                      <h3>Grégory Paul - <a href="http://gpaul.me" title="Portfolio">gpaul.me</a></h3>
-                  </hgroup>
-              </section>
-          </div>
+                <div class="slide" id="title-slide">
+                    <style>
+                        #title-slide h1, #title-slide h2 { color: black; }
+                        #title-slide h1 { letter-spacing: -2px; font-size: 70px; }
+                        #title-slide h2 { margin-top: 1em; font-size: 36px; color: #665544; }
+                    </style>
+                    <section class="middle">
+                    <hgroup>
+                    <h1>HTTP</h1>
+                    <h2>Hypertext Transfer Protocol</h2>
+                    <h3>Grégory Paul - <a href="http://gpaul.me" title="Portfolio">gpaul.me</a></h3>
+                    </hgroup>
+                    </section>
+                </div>
 
-          <div class="slide" id="summary-slide">
-              <style>
-                  #summary-slide ol { column-count: 2; }
-              </style>
-              <section>
-                  <h2>Sommaire</h2>
-                  <ol>
-                      <li>La petite histoire...</li>
-                      <li>Dans les grandes lignes</li>
-                      <li>Versions</li>
-                      <li>Verbes</li>
-                      <li>URI, URL, connections</li>
-                      <li>Négotiation de contenu</li>
-                      <li>Requêtes conditionnelles</li>
-                      <li>Plage de réponse et réponse partielle</li>
-                      <li>Entêtes client, serveur</li>
-                      <li>Gestion du cache</li>
-                      <li>Authentification</li>
-                      <li>SSL/TLS</li>
-                      <li>Extensions : WebDAV,...</li>
-                      <li>SPDY</li>
-                      <li>Outils</li>
-                  </ol>
-              </section>
-          </div>
+                <div class="slide" id="summary-slide">
+                    <style>
+                        #summary-slide ol { column-count: 2; }
+                    </style>
+                    <section>
+                    <h2>Sommaire</h2>
+                    <ol>
+                        <li>La petite histoire...
+                        <li>Dans les grandes lignes
+                        <li>Versions 0.9, 1.0. 1.1
+                        <li>URI, URL, URN
+                        <li>Verbes
+                        <li>Codes de retour
+                        <li>Négotiation de contenu
+                        <li>Requêtes conditionnelles
+                        <li>Plage de réponse et réponse partielle
+                        <li>Entêtes client, serveur
+                        <li>Gestion du cache
+                        <li>Authentification
+                        <li>SSL/TLS
+                        <li>Extensions (WebDAV,...)
+                        <li>SPDY et HTTP 2.0
+                        <li>Outils
+                    </ol>
+                    </section>
+                </div>
 
-          <div class="slide" id="story-slide">
-              <section>
-                  <h2>La petite histoire...</h2>
-                  <ul>
-                      <li><a href="http://www.w3.org/People/Berners-Lee/">Tim Berners-Lee</a> et <a href="http://www.robertcailliau.eu/Welcome-en.html">Robert Cailliau</a>, au <abbr title="Conseil Européen pour la Recherche Nucléaire">CERN</abbr>
-                      <li>propose en 1989 un système hypertexte
-                      <li>bâti sur <abbr title="Transmission Control Protocol">TCP</abbr>/<abbr title="Internet Protocol">IP</abbr>.
-                      <li>En 1991, HTTP/0.9
-                      <li>En 1993, le <abbr title="National Center for Supercomputing Applications">NCSA</abbr> créé <a href="ftp://ftp.ncsa.uiuc.edu/Mosaic/">Mosaic</a> et <a href="http://httpd.apache.org/ABOUT_APACHE.html">HTTPd</a>
-                      <li>En 1996, <a href="http://tools.ietf.org/html/rfc1945"><abbr title="Request for comment">RFC</abbr> 1945</a> : HTTP/1.0
-                      <li>En 1997, <a href="http://tools.ietf.org/html/rfc2068"><abbr title="Request for comment">RFC</abbr> 2068</a> : HTTP/1.1
-                      <li>En 2000, <a href="http://www.ics.uci.edu/~fielding/">Roy Fielding</a> publie <a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Architectural Styles and the Design of Network-based Software Architectures</a>
-                      <li>En 2009, Google <a href="http://googleresearch.blogspot.com/2009/11/2x-faster-web.html">propose</a> <a href="http://www.chromium.org/spdy">SPDY</a>.
-                  </ul>
-              </section>
-          </div>
+                <div class="slide" id="story-slide">
+                    <section>
+                    <h2>La petite histoire...</h2>
+                    <ul>
+                        <li><a href="http://www.w3.org/People/Berners-Lee/">Tim Berners-Lee</a> et <a href="http://www.robertcailliau.eu/Welcome-en.html">Robert Cailliau</a>, au <abbr title="Conseil Européen pour la Recherche Nucléaire">CERN</abbr>
+                        <li>propose en 1989 un système hypertexte
+                        <li>bâti sur <abbr title="Transmission Control Protocol">TCP</abbr>/<abbr title="Internet Protocol">IP</abbr>.
+                        <li>En 1991, HTTP/0.9
+                        <li>En 1993, le <abbr title="National Center for Supercomputing Applications">NCSA</abbr> créé <a href="ftp://ftp.ncsa.uiuc.edu/Mosaic/">Mosaic</a> et <a href="http://httpd.apache.org/ABOUT_APACHE.html">HTTPd</a>
+                        <li>En 1996, <a href="http://tools.ietf.org/html/rfc1945"><abbr title="Request for comment">RFC</abbr> 1945</a> : HTTP/1.0
+                        <li>En 1997, <a href="http://tools.ietf.org/html/rfc2068"><abbr title="Request for comment">RFC</abbr> 2068</a> : HTTP/1.1
+                        <li>En 2000, <a href="http://www.ics.uci.edu/~fielding/">Roy Fielding</a> publie <a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Architectural Styles and the Design of Network-based Software Architectures</a>
+                        <li>En 2009, Google <a href="http://googleresearch.blogspot.com/2009/11/2x-faster-web.html">propose</a> <a href="http://www.chromium.org/spdy">SPDY</a>.
+                    </ul>
+                    </section>
+                </div>
 
-          <div class="slide" id="overview-model-slide">
-              <section>
-              <h2>Dans les grandes lignes : modèle</h2>
-                <p class="center"><img src="https://docs.google.com/drawings/pub?id=13JohKX0LOXs74gu-DB8gKaSY_OIB050vX14_lKBp_HQ&w=574&h=448" title="Couches réseau" /></p>
-              </section>
-          </div>
+                <div class="slide" id="overview-model-slide">
+                    <section>
+                    <h2>Dans les grandes lignes : modèle</h2>
+                    <p class="center"><img src="https://docs.google.com/drawings/pub?id=13JohKX0LOXs74gu-DB8gKaSY_OIB050vX14_lKBp_HQ&w=574&h=448" title="Couches réseau" /></p>
+                    </section>
+                </div>
 
           <div class="slide" id="overview-example-slide">
               <section>
@@ -169,37 +166,365 @@ Server: gws
               </section>
           </div>
 
-          <!-- to copy / paste -->
-          <div class="slide" id="sample-slide">
+          <div class="slide" id="http-0-9-slide">
               <section>
-              <h2>Title</h2>
-              <p>I'm an empty slide to copy and paste</p>
+              <h2>HTTP 0.9</h2>
+              <ul>
+                  <li>en cours de développement dans les années 91~95
+                  <li>verbe GET
+                  <li>URI
+                  <li>puis code de retour (status code)
+                  <li>puis l’entête content-type
+                  <li>Sans état
+                  <li>mais les cookies apparaissent par <a href="http://www.montulli.org/lou">Lou Montulli</a> en 94 pour une boutique d’ecommerce
+              </ul>
+              </section>
+          </div>
+
+          <div class="slide" id="http-1-0-slide">
+              <section>
+              <h2>HTTP 1.0</h2>
+              <ul>
+                  <li>en 1996, <a href="http://tools.ietf.org/html/rfc1945"><abbr title="Request for comment">RFC</abbr> 1945</a>
+                  <li>verbe GET, POST, HEAD mais aussi PUT, DELETE, LINK, UNLINK
+                  <li>standardisation des entêtes, du formatage des réponses, des codes d’erreurs
+                  <li>cache côté client via les en‐têtes Last-modified, Pragma, Expires et la compression
+              </ul>
+              </section>
+          </div>
+
+          <div class="slide" id="http-1-1-slide">
+              <section>
+              <h2>HTTP 1.1</h2>
+              <ul>
+                  <li>En 1997, <a href="http://tools.ietf.org/html/rfc2068"><abbr title="Request for comment">RFC</abbr> 2068</a> : HTTP/1.1
+                  <li>OPTIONS, CONNECT et TRACE (<del>LINK</del>, <del>UNLINK</del>),
+                  <li>en-tête Host obligatoire
+                  <li>négociation de contenu et de langage (Accept, Accept-Language, Accept-Charset)
+                  <li>pipelining via l’entête Connection: Keepalive 
+                  <li>découpe de la réponse en plusieurs morceaux via Transfer-Encoding: chunked
+              </ul>
+              </section>
+          </div>
+
+          <div class="slide" id="URI-URL-URN-slide">
+              <section>
+              <h2>URI / URL / URN</h2>
+              <img width="200" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/URI_Euler_Diagram_no_lone_URIs.svg" style="float: left; margin: .5em 2em 0 0">
+              <p>Une <abbr title="Uniform Resource Identifier">URI</abbr> identifie.</p>
+              <p>Une <abbr title="Uniform Resource Locator">URL</abbr> identifie et localise.</p>
+              <p>une <abbr title="Uniform Resource Name">URN</abbr> identifie et nomme.</p>
+              <h3>URLs :</h3>
+              <ul>
+                  <li>mailto:someone@example.com
+                  <li>http://www.damnhandy.com/
+                  <li>file:///home/someuser/somefile.txt
+              </ul>
+              <h3>URNs :</h3>
+              <ul>
+                  <li>urn:mpeg:mpeg7:schema:2001urn:isbn:0451450523
+                  <li>urn:sha1:YNCKHTQCWBTRNJIV4WNAE52SJUQCZO5C
+                  <li>urn:uuid:6e8bc430-9c3a-11d9-9669-0800200c9a66
+              </ul>
+              </section>
+          </div>
+
+
+          <div class="slide" id="verbs-slide">
+              <style>
+                  #verbs-slide span:after { color: #654; margin-left: .5em;  font-size: .7em; vertical-align: super; }
+                  #verbs-slide .idempotent span:after { content: "idempotent"; }
+                  #verbs-slide .safe.idempotent span:after { content: "safe, idempotent"; }
+              </style>
+              <section>
+              <h2>Verbes</h2>
+              <ul>
+                  <li class="safe idempotent"><span>HEAD</span>
+                  <li class="safe idempotent"><span>GET</span>
+                  <li class=""><span>POST</span>
+                  <li class="idempotent"><span>PUT</span>
+                  <li class="idempotent"><span>DELETE</span>
+                  <li class="safe idempotent"><span>TRACE</span>
+                  <li class="safe idempotent"><span>OPTIONS</span>
+                  <li class=""><span>CONNECT</span>
+                  <li class=""><span>PATCH</span>
+              </ul>
+              </section>
+          </div>
+
+          <div class="slide" id="status-code-slide">
+              <style>
+                  #status-code-slide ul > li > ul { 
+                      max-height: 90px; overflow-y: auto;border: 1px dotted #654;
+                      font-size: 10px; column-count: 2;
+                  }
+                  #status-code-slide ul > li > ul > li { padding: 0; }
+              </style>
+              <section>
+              <h2>Codes de retour</h2>
+              <ul>
+                  <li class="100">1xx Informational (3)
+                  <ul>
+                      <li>100 Continue
+                      <li>101 Switching Protocols
+                      <li>102 Processing (<a href="/wiki/WebDAV" title="WebDAV">WebDAV</a>; RFC 2518)
+                  </ul>
+                  <li class="200">2xx Success (10)
+                  <ul>
+                      <li>200 OK
+                      <li>201 Created
+                      <li>202 Accepted
+                      <li>203 Non-Authoritative Information (since HTTP/1.1)
+                      <li>204 No Content
+                      <li>205 Reset Content
+                      <li>206 Partial Content
+                      <li>207 Multi-Status (WebDAV; RFC 4918)
+                      <li>208 Already Reported (WebDAV; RFC 5842)
+                      <li>226 IM Used (RFC 3229)
+                  </ul>
+                  <li class="300">3xx Redirection (9)
+                  <ul>
+                      <li>300 Multiple Choices
+                      <li><a href="https://en.wikipedia.org/wiki/HTTP_301" title="HTTP 301">301 Moved Permanently</a>
+                      <li><a href="https://en.wikipedia.org//wiki/HTTP_302" title="HTTP 302">302 Found</a>
+                      <li><a href="https://en.wikipedia.org//wiki/HTTP_303" title="HTTP 303">303 See Other</a> (since HTTP/1.1)
+                      <li>304 Not Modified
+                      <li>305 Use Proxy (since HTTP/1.1)
+                      <li>306 Switch Proxy
+                      <li>307 Temporary Redirect (since HTTP/1.1)
+                      <li>308 Permanent Redirect (approved as experimental)
+                  </ul>
+                  <li class="400">4xx Client Error (38)
+                  <ul>
+                      <li>400 Bad Request
+                      <li>401 Unauthorized
+                      <li>402 Payment Required
+                      <li><a href="https://en.wikipedia.org//wiki/HTTP_403" title="HTTP 403">403 Forbidden</a>
+                      <li><a href="https://en.wikipedia.org//wiki/HTTP_404" title="HTTP 404">404 Not Found</a>
+                      <li>405 Method Not Allowed
+                      <li>406 Not Acceptable
+                      <li>407 Proxy Authentication Required
+                      <li>408 Request Timeout
+                      <li>409 Conflict
+                      <li>410 Gone
+                      <li>411 Length Required
+                      <li>412 Precondition Failed
+                      <li>413 Request Entity Too Large
+                      <li>414 Request-URI Too Long
+                      <li>415 Unsupported Media Type
+                      <li>416 Requested Range Not Satisfiable
+                      <li>417 Expectation Failed
+                      <li>418 I'm a teapot (RFC 2324)
+                      <li>420 Enhance Your Calm (Twitter)
+                      <li>422 Unprocessable Entity (WebDAV; RFC 4918)
+                      <li>423 Locked (WebDAV; RFC 4918)
+                      <li>424 Failed Dependency (WebDAV; RFC 4918)
+                      <li>424 Method Failure (<a href="https://en.wikipedia.org//wiki/WebDAV" title="WebDAV">WebDAV</a>)
+                      <li>425 Unordered Collection (Internet draft)
+                      <li>426 Upgrade Required (RFC 2817)
+                      <li>428 Precondition Required (<a class="external mw-magiclink-rfc" href="//tools.ietf.org/html/rfc6585">RFC 6585</a>)
+                      <li>429 Too Many Requests (<a class="external mw-magiclink-rfc" href="//tools.ietf.org/html/rfc6585">RFC 6585</a>)
+                      <li>431 Request Header Fields Too Large (<a class="external mw-magiclink-rfc" href="//tools.ietf.org/html/rfc6585">RFC 6585</a>)
+                      <li>444 No Response (Nginx)
+                      <li>449 Retry With (Microsoft)
+                      <li>450 Blocked by Windows Parental Controls (Microsoft)
+                      <li>451 Unavailable For Legal Reasons (Internet draft)
+                      <li>494 Request Header Too Large (Nginx)
+                      <li>495 Cert Error (Nginx)
+                      <li>496 No Cert (Nginx)
+                      <li>497 HTTP to HTTPS (Nginx)
+                      <li>499 Client Closed Request (Nginx)
+                  </ul>
+                  <li class="500">5xx Server Error (14)
+                  <ul>
+                      <li>500 Internal Server Error
+                      <li>501 Not Implemented
+                      <li>502 Bad Gateway
+                      <li>503 Service Unavailable
+                      <li>504 Gateway Timeout
+                      <li>505 HTTP Version Not Supported
+                      <li>506 Variant Also Negotiates (RFC 2295)
+                      <li>507 Insufficient Storage (WebDAV; RFC 4918)
+                      <li>508 Loop Detected (WebDAV; RFC 5842)
+                      <li>509 Bandwidth Limit Exceeded (Apache bw/limited extension)
+                      <li>510 Not Extended (RFC 2774)
+                      <li>511 Network Authentication Required (<a class="external mw-magiclink-rfc" href="//tools.ietf.org/html/rfc6585">RFC 6585</a>)
+                      <li>598 Network read timeout error (Unknown)
+                      <li>599 Network connect timeout error (Unknown)
+                  </ul>
+              </ul>
+              </section>
+          </div>
+
+          <div class="slide" id="client-header-slide">
+              <section>
+              <h2>Entêtes du client</h2>
+              <p></p>
+              </section>
+          </div>
+
+          <div class="slide" id="server-header-slide">
+              <section>
+              <h2>Entêtes du serveur</h2>
+              <p></p>
+              </section>
+          </div>
+
+          <div class="slide" id="cookie-slide">
+              <section>
+              <h2>Cookie</h2>
+              <ol>
+                  <li>Client <pre>GET / HTTP/1.1
+Host: www.exemple.org</pre>
+                  <li>Serveur <pre>HTTP/1.1 200 OK
+ Content-type: text/html
+ Set-Cookie: name=value
+ ...</pre>
+                  <li>Client <pre>GET /page.html HTTP/1.1
+Host: www.exemple.org
+Cookie: name=value</pre>
+              </ol>
+              </section>
+          </div>
+
+          <div class="slide" id="cookie-details-slide">
+              <section>
+              <h2>Cookie</h2>
+              <ul>
+                  <li>Défini pour un nom de domaine complet (www.domain.com) par défaut
+                  <li>limité à 20 cookies par domaine, d’environ 4000 caractères
+                  <li>Envoyé à chaque requête (html, JS, Ajax, images, etc)
+                  <li>Les cookies empêchent aux serveurs proxy de cacher les requêtes (Cache-Control: public|private)
+                  <li>d’où l’intérêt de servir les ressources communes à tous les clients (images, css, js) depuis un autre domaine (static.domain.com)
+                  <li>Cookie de session
+                  <li>Cookie chiffré 
+                  <li>Cookie "first/third party"
+              </ul>
+              </section>
+          </div>
+
+          <div class="slide" id="cookie-details-2-slide">
+              <section>
+              <h2>Cookie</h2>
+              <p>
+              <img width="500" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/HTTP-Cookie-Google.svg">
+              <h3>Attributs facultatifs :</h3>
+              <ul>
+                  <li>date d'expiration (sans, cookie supprimé lorsque le navigateur est fermé), 
+                  <li>un nom de domaine pour permettre le "cross-domain"
+                  <li>un chemin,
+                  <li>type de connexion prévu (chiffrée ou non) 
+              </ul>
+              </p>
+              </section>
+          </div>
+          <div class="slide" id="cookie-security-slide">
+              <section>
+              <h2>Cookie</h2>
+              <h3>Sécurité : Vol de cookie</h3>
+              <p>
+              <img src="https://s3.amazonaws.com/files.posterous.com/codebutler/KBw6HGlZ05ptbrg2kPOMPm2z2o1WxrP8bmAKDEybQVUfIKXEanzqIebB7j3L/three.png?AWSAccessKeyId=AKIAJFZAE65UYRT34AOQ&Expires=1346160969&Signature=y586vmL6h8c%2Bn6HKS49LQmCR4WU%3D"><br>
+              <a href="http://codebutler.com/firesheep?c=1">Firesheep</a>
+              </p>
+              </section>
+          </div>
+
+
+          <div class="slide" id="content-negociation-slide">
+              <section>
+              <h2>Négociation de contenu</h2>
+              <p></p>
+              </section>
+          </div>
+
+          <div class="slide" id="conditionnal-request-slide">
+              <section>
+              <h2>Requêtes conditionnelles</h2>
+              <p></p>
+              </section>
+          </div>
+
+          <div class="slide" id="cache-slide">
+              <section>
+              <h2>Cache</h2>
+              <p></p>
+              </section>
+          </div>
+
+          <div class="slide" id="partial-request-slide">
+              <section>
+              <h2>Plage de réponse et réponse partielle</h2>
+              <p></p>
+              </section>
+          </div>
+
+          <div class="slide" id="authentification-slide">
+              <section>
+              <h2>Authenfication</h2>
+              <p></p>
+              </section>
+          </div>
+
+          <div class="slide" id="ssl-tls-slide">
+              <section>
+              <h2>SSL/TLS</h2>
+              <p></p>
+              </section>
+          </div>
+
+          <div class="slide" id="extension-slide">
+              <section>
+              <h2>Extension</h2>
+              <p></p>
+              <h3>WebDAV</h3>
+              <p></p>
+              </section>
+          </div>
+
+          <div class="slide" id="spdy-slide">
+              <section>
+              <h2>Speedy</h2>
+              <p></p>
+              </section>
+          </div>
+
+          <div class="slide" id="http2-slide">
+              <section>
+              <h2>HTTP 2.0</h2>
+              <p></p>
+              </section>
+          </div>
+
+          <div class="slide" id="tools-slide">
+              <section>
+              <h2>Outils</h2>
+              <p></p>
               </section>
           </div>
 
           <div class="slide" id="resources-slide">
               <section>
-                  <h2>Resources</h2>
-                  <ul>
-                      <li><a href="http://rsstodolist.appspot.com/?n=http&amp;l=100">http://rsstodolist.appspot.com/?name=http</a>
-                  </ul>
+              <h2>Resources</h2>
+              <ul>
+                  <li><a href="http://rsstodolist.appspot.com/?n=http&amp;l=100">http://rsstodolist.appspot.com/?name=http</a>
+              </ul>
               </section>
           </div>
 
       </div> <!-- slides -->
 
-    </div> <!-- presentation -->
+  </div> <!-- presentation -->
 
-    <script src="js/slides.js"></script>
-    <!--[if lt IE 9]>
-    <script 
+  <script src="js/slides.js"></script>
+  <!--[if lt IE 9]>
+  <script 
       src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">
-    </script>
-    <script>CFInstall.check({ mode: "overlay" });</script>
-    <![endif]-->
-    <script src="src/prettify/prettify.js" onload="prettyPrint();" defer></script>
-    <script src="js/slides.js"></script>
-    <script src="js/cache.js"></script>
-    <script src="js/prefixfree.min.js"></script>
+  </script>
+  <script>CFInstall.check({ mode: "overlay" });</script>
+  <![endif]-->
+  <script src="src/prettify/prettify.js" onload="prettyPrint();" defer></script>
+  <script src="js/slides.js"></script>
+  <script src="js/cache.js"></script>
+  <script src="js/prefixfree.min.js"></script>
   </body>
 </html>
