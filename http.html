@@ -116,10 +116,11 @@ Brad Neuberg
                     <section>
                     <h2>La petite histoire...</h2>
                     <ul>
-                        <li><a href="http://www.w3.org/People/Berners-Lee/">Tim Berners-Lee</a> et <a href="http://www.robertcailliau.eu/Welcome-en.html">Robert Cailliau</a>, au <abbr title="Conseil Européen pour la Recherche Nucléaire">CERN</abbr>
-                        <li>propose en 1989 un système hypertexte
+                        <li>En 1989, au <abbr title="Conseil Européen pour la Recherche Nucléaire">CERN</abbr>,
+                        <li><a href="http://www.w3.org/People/Berners-Lee/">Tim Berners-Lee</a> et <a href="http://www.robertcailliau.eu/Welcome-en.html">Robert Cailliau</a>
+                        <li>propose un système hypertexte
                         <li>bâti sur <abbr title="Transmission Control Protocol">TCP</abbr>/<abbr title="Internet Protocol">IP</abbr>.
-                        <li>En 1991, HTTP/0.9
+                        <li>En 1991, devient HTTP/0.9
                         <li>En 1993, le <abbr title="National Center for Supercomputing Applications">NCSA</abbr> créé <a href="ftp://ftp.ncsa.uiuc.edu/Mosaic/">Mosaic</a> et <a href="http://httpd.apache.org/ABOUT_APACHE.html">HTTPd</a>
                         <li>En 1996, <a href="http://tools.ietf.org/html/rfc1945"><abbr title="Request for comment">RFC</abbr> 1945</a> : HTTP/1.0
                         <li>En 1997, <a href="http://tools.ietf.org/html/rfc2068"><abbr title="Request for comment">RFC</abbr> 2068</a> : HTTP/1.1
@@ -232,22 +233,23 @@ Server: gws
 
           <div class="slide" id="verbs-slide">
               <style>
-                  #verbs-slide span:after { color: #654; margin-left: .5em;  font-size: .7em; vertical-align: super; }
+                  #verbs-slide .used span { font-weight: bold; } 
+                  #verbs-slide span:after { color: #654; margin-left: .5em;  font-size: .7em; vertical-align: super; font-weight: normal;  }
                   #verbs-slide .idempotent span:after { content: "idempotent"; }
                   #verbs-slide .safe.idempotent span:after { content: "safe, idempotent"; }
               </style>
               <section>
               <h2>Verbes</h2>
               <ul>
-                  <li class="safe idempotent"><span>HEAD</span>
-                  <li class="safe idempotent"><span>GET</span>
-                  <li class=""><span>POST</span>
-                  <li class="idempotent"><span>PUT</span>
-                  <li class="idempotent"><span>DELETE</span>
-                  <li class="safe idempotent"><span>TRACE</span>
+                  <li class="safe idempotent used"><span>HEAD</span> : seulement les entêtes
+                  <li class="safe idempotent used"><span>GET</span> : le document
+                  <li class="used"><span>POST</span> : soumission d’un formulaire
+                  <li class="idempotent used"><span>PUT</span>
+                  <li class="idempotent used"><span>DELETE</span>
+                  <li class="safe idempotent"><span>TRACE</span> : echo de la requête
                   <li class="safe idempotent"><span>OPTIONS</span>
-                  <li class=""><span>CONNECT</span>
-                  <li class=""><span>PATCH</span>
+                  <li class=""><span>CONNECT</span> : SSL/TLS
+                  <li class=""><span>PATCH</span> : modification partielle <small>(<a href="https://tools.ietf.org/html/rfc5789">RFC 5789</a>, mai 2010)</small>
               </ul>
               </section>
           </div>
@@ -286,8 +288,8 @@ Server: gws
                   <ul>
                       <li>300 Multiple Choices
                       <li><a href="https://en.wikipedia.org/wiki/HTTP_301" title="HTTP 301">301 Moved Permanently</a>
-                      <li><a href="https://en.wikipedia.org//wiki/HTTP_302" title="HTTP 302">302 Found</a>
-                      <li><a href="https://en.wikipedia.org//wiki/HTTP_303" title="HTTP 303">303 See Other</a> (since HTTP/1.1)
+                      <li><a href="https://en.wikipedia.org/wiki/HTTP_302" title="HTTP 302">302 Found</a>
+                      <li><a href="https://en.wikipedia.org/wiki/HTTP_303" title="HTTP 303">303 See Other</a> (since HTTP/1.1)
                       <li>304 Not Modified
                       <li>305 Use Proxy (since HTTP/1.1)
                       <li>306 Switch Proxy
@@ -359,14 +361,102 @@ Server: gws
           <div class="slide" id="client-header-slide">
               <section>
               <h2>Entêtes du client</h2>
-              <p></p>
+              <ul>
+                  <li>Accept: text/plain
+                  <li>Accept: text/html; q=1.0, text/*; q=0.8, image/gif; q=0.6, image/jpeg; q=0.6, image/*; q=0.5, */*; q=0.1
+                  <li>Accept-Charset: utf-8
+                  <li>Accept-Encoding: gzip, deflate
+                  <li>Accept-Language: en-US
+                  <li>Accept-Language: de; q=1.0, en; q=0.5
+                  <li>Accept-Datetime: Thu, 31 May 2007 20:35:00 GMT
+                  <li>Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+                  <li>Cache-Control: no-cache
+                  <li>Connection: keep-alive
+                  <li>Cookie: $Version=1; Skin=new;
+                  <li>Content-Length: 348
+                  <li>Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==
+                  <li>Content-Type: application/x-www-form-urlencoded
+                  <li>Date: Tue, 15 Nov 1994 08:12:31 GMT
+                  <li>Expect: 100-continue
+                  <li>From: user@example.com
+                  <li>Host: en.wikipedia.org:80
+                  <li>Host: en.wikipedia.org
+                  <li>If-Match: "737060cd8c284d8af7ad3082f209582d"
+                  <li>If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT
+                  <li>If-None-Match: "737060cd8c284d8af7ad3082f209582d"
+                  <li>If-Range: "737060cd8c284d8af7ad3082f209582d"
+                  <li>If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT
+                  <li>Max-Forwards: 10
+                  <li>Pragma: no-cache
+                  <li>Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+                  <li>Range: bytes=500-999
+                  <li>Referer: http://en.wikipedia.org/wiki/Main_Page
+                  <li>TE: trailers, deflate
+                  <li>Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11
+                  <li>User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/12.0
+                  <li>Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)
+                  <li>Warning: 199 Miscellaneous warning
+                  <li>Example
+                  <li>X-Requested-With: XMLHttpRequest
+                  <li>DNT: 1 (Do Not Track Enabled)
+                  <li>DNT: 0 (Do Not Track Disabled)
+                  <li>X-Forwarded-For: client1, proxy1, proxy2
+                  <li>X-Forwarded-For: 129.78.138.66, 129.78.64.103
+                  <li>x-att-deviceid: MakeModel/Firmware
+                  <li>x-wap-profile: http://wap.samsungmobile.com/uaprof/SGH-I777.xml
+                  <li>Proxy-Connection: keep-alive
+              </ul>
               </section>
           </div>
 
           <div class="slide" id="server-header-slide">
               <section>
               <h2>Entêtes du serveur</h2>
-              <p></p>
+              <ul>
+                  <li>Access-Control-Allow-Origin: *
+                  <li>Accept-Ranges: bytes
+                  <li>Age: 12
+                  <li>Allow: GET, HEAD
+                  <li>Cache-Control: max-age=3600
+                  <li>Connection: close
+                  <li>Content-Encoding: gzip
+                  <li>Content-Language: da
+                  <li>Content-Length: 348
+                  <li>Content-Location: /index.htm
+                  <li>Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==
+                  <li>Content-Disposition: attachment; filename="fname.ext"
+                  <li>Content-Range: bytes 21010-47021/47022
+                  <li>Content-Type: text/html; charset=utf-8
+                  <li>Date: Tue, 15 Nov 1994 08:12:31 GMT
+                  <li>ETag: "737060cd8c284d8af7ad3082f209582d"
+                  <li>Expires: Thu, 01 Dec 1994 16:00:00 GMT
+                  <li>Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT
+                  <li>Link: </feed>; rel="alternate"[22]
+                  <li>Location: http://www.w3.org/pub/WWW/People.html
+                  <li>P3P: CP="This is not a P3P policy! See http://www.google.com/support/accounts/bin/answer.py?hl=en&answer=151657 for more info."
+                  <li>Pragma: no-cache
+                  <li>Proxy-Authenticate: Basic
+                  <li>Refresh: 5; url=http://www.w3.org/pub/WWW/People.html
+                  <li>Retry-After: 120
+                  <li>Server: Apache/2.4.1 (Unix)
+                  <li>Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1
+                  <li>Strict-Transport-Security: max-age=16070400; includeSubDomains
+                  <li>Trailer: Max-Forwards
+                  <li>Transfer-Encoding: chunked
+                  <li>Vary: *
+                  <li>Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)
+                  <li>Warning: 199 Miscellaneous warning
+                  <li>WWW-Authenticate: Basic
+                  <li>X-Frame-Options: deny
+                  <li>X-XSS-Protection: 1; mode=block
+                  <li>X-Content-Type-Options: nosniff
+                  <li>X-Forwarded-Proto: https
+                  <li>Front-End-Https: on
+                  <li>X-Powered-By: PHP/5.4.0
+                  <li>X-UA-Compatible: IE=EmulateIE7
+                  <li>X-UA-Compatible: IE=edge
+                  <li>X-UA-Compatible: Chrome=1
+              </ul>
               </section>
           </div>
 
@@ -375,14 +465,16 @@ Server: gws
               <h2>Cookie</h2>
               <ol>
                   <li>Client <pre>GET / HTTP/1.1
-Host: www.exemple.org</pre>
+Host: www.exemple.org
+...</pre>
                   <li>Serveur <pre>HTTP/1.1 200 OK
- Content-type: text/html
- Set-Cookie: name=value
- ...</pre>
+Content-type: text/html
+Set-Cookie: name=value
+...</pre>
                   <li>Client <pre>GET /page.html HTTP/1.1
 Host: www.exemple.org
-Cookie: name=value</pre>
+Cookie: name=value
+...</pre>
               </ol>
               </section>
           </div>
@@ -420,55 +512,150 @@ Cookie: name=value</pre>
           </div>
           <div class="slide" id="cookie-security-slide">
               <section>
-              <h2>Cookie</h2>
-              <h3>Sécurité : Vol de cookie</h3>
-              <p>
-              <img src="https://s3.amazonaws.com/files.posterous.com/codebutler/KBw6HGlZ05ptbrg2kPOMPm2z2o1WxrP8bmAKDEybQVUfIKXEanzqIebB7j3L/three.png?AWSAccessKeyId=AKIAJFZAE65UYRT34AOQ&Expires=1346160969&Signature=y586vmL6h8c%2Bn6HKS49LQmCR4WU%3D"><br>
-              <a href="http://codebutler.com/firesheep?c=1">Firesheep</a>
-              </p>
+              <h2>Cookie - Sécurité</h2>
+              <h3>Vol de cookie</h3>
+              <p><a href="http://codebutler.com/firesheep?c=1"><img src="imgs/firesheep.png">Firesheep</a></p>
+              <h3>Forge de cookie</h3>
+              <p><a href="http://www.cgisecurity.com/lib/CookiePoisoningByline.pdf">Cookie Poisoning</a> <small>(pdf)</small></p>
               </section>
           </div>
-
 
           <div class="slide" id="content-negociation-slide">
               <section>
               <h2>Négociation de contenu</h2>
-              <p></p>
+              <ol>
+                  <li>Client <pre>GET /shops HTTP/1.1
+Host: www.exemple.org
+Accept: application/json
+Accept-Charset: utf-8
+Accept-Encoding: gzip, deflate
+Accept-Language: fr-FR
+... </pre>
+                  <li>Serveur <pre>HTTP/1.1 200 OK
+Content-type: application/json; charset=utf-8
+Content-Encoding: gzip
+Content-Language: en-US
+ ...</pre>
+ </ol>
               </section>
           </div>
+
+
 
           <div class="slide" id="conditionnal-request-slide">
               <section>
               <h2>Requêtes conditionnelles</h2>
-              <p></p>
+              <h3>Client</h3>
+              <ul>
+                  <li>If-Match: "737060cd8c284d8af7ad3082f209582d"
+                  <li>If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT
+                  <li>If-None-Match: "737060cd8c284d8af7ad3082f209582d"
+                  <li>If-Range: "737060cd8c284d8af7ad3082f209582d"
+                  <li>If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT
+              </ul>
+              <ul>
+              </ul>
               </section>
           </div>
 
           <div class="slide" id="cache-slide">
               <section>
               <h2>Cache</h2>
-              <p></p>
+              <h3>Client</h3>
+              <ul>
+                  <li>Cache-Control: no-cache
+                  <li>Pragma: no-cache
+              </ul>
+              <h3>Serveur</h3>
+              <ul>
+                  <li>Cache-Control: max-age=3600
+                  <li>Age: 12
+                  <li>Pragma: no-cache
+                  <li>ETag: "737060cd8c284d8af7ad3082f209582d"
+                  <li>Expires: Thu, 01 Dec 1994 16:00:00 GMT
+                  <li>Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT
+              </ul>
               </section>
           </div>
 
           <div class="slide" id="partial-request-slide">
               <section>
               <h2>Plage de réponse et réponse partielle</h2>
-              <p></p>
+              <ol>
+                  <li>Client <pre>GET / HTTP/1.1
+Host: www.exemple.org
+Accept-Ranges: bytes
+Content-Length: 384500
+Content-Type: video/mp4
+...</pre>
+                  <li>Serveur <pre>HTTP/1.1 200 OK
+Content-type: video/mp4
+Range: bytes=385000
+ ...</pre>
               </section>
           </div>
 
-          <div class="slide" id="authentification-slide">
+          <div class="slide" id="authentification-basic-slide">
               <section>
-              <h2>Authenfication</h2>
-              <p></p>
-              </section>
-          </div>
+              <h2>Authenfication basique</h2>
+              <ol>
+                  <li>Client <pre>GET /private/index.html HTTP/1.1
+Host: www.exemple.org
+...</pre>
+              <li>Serveur <pre>HTTP/1.1 401 Authorization Required
+Content-type: text/html
+WWW-Authenticate: Basic realm="Secure Area"
+...</pre>
+              <li>Client <pre>GET /private/index.html HTTP/1.1
+Host: www.exemple.org
+Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+</pre>
+            </ol>
+            <code>&gt; echo -n "Aladdin:open sesame" | base64 - 
+                &gt; QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+                &gt; echo -n QWxhZGRpbjpvcGVuIHNlc2FtZQ== | base64 -D
+                &gt; Aladdin:open sesame
+            </code>
+            </section>
+        </div>
 
-          <div class="slide" id="ssl-tls-slide">
+        <div class="slide" id="authentification-digest-slide">
+            <section>
+            <h2>Authenfication Digest</h2>
+            <ol>
+<li>Serveur <pre>HTTP/1.1 401 Authorization Required
+Content-type: text/html
+WWW-Authenticate: Digest realm="testrealm@host.com",
+qop="auth, auth-int",
+nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093",
+opaque="5ccc069c403ebaf9f0171e9517f40e41"
+...</pre>
+<li>Client <pre>GET /private/index.html HTTP/1.1
+Host: www.exemple.org
+GET /dir/index.html HTTP/1.0
+Host: localhost
+Authorization: Digest username="gpaul",
+realm="testrealm@host.com",
+nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093",
+uri="/private/index.html",
+qop=auth,
+nc=00000001,
+cnonce="0a4f113b",
+response="6629fae49393a05397450978507c4ef1",
+opaque="5ccc069c403ebaf9f0171e9517f40e41"
+</pre>
+<li>Serveur <pre>HTTP/1.1 HTTP/1.0 200 OK
+            </ol>
+        </section>
+        </div>
+
+        <div class="slide" id="ssl-tls-slide">
               <section>
               <h2>SSL/TLS</h2>
-              <p></p>
+              <h3>Client</h3>
+              <ul>
+                  <li>Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11
+              </ul>
               </section>
           </div>
 
@@ -507,6 +694,7 @@ Cookie: name=value</pre>
               <h2>Resources</h2>
               <ul>
                   <li><a href="http://rsstodolist.appspot.com/?n=http&amp;l=100">http://rsstodolist.appspot.com/?name=http</a>
+                  <li><a href="http://viewdns.info/">http://viewdns.info/</a>
               </ul>
               </section>
           </div>
