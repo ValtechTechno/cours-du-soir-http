@@ -45,7 +45,7 @@ Brad Neuberg
             <div id="presentation-counter">Loading...</div>
             <div class="slides">
                 <div class="slide" id="landing-slide">
-                    <style>
+                    <style scoped>
                         #landing-slide p { font-size: 35px; }
                         p#disclaimer-message { font-size: 20px; }
                     </style>
@@ -56,7 +56,7 @@ Brad Neuberg
                 </div>
 
                 <div class="slide" id="controls-slide">
-                    <style>
+                    <style scoped>
                         #controls-slide li, #controls-slide p { font-size: 35px; }
                     </style>
                     <section>
@@ -71,7 +71,7 @@ Brad Neuberg
                 </div>
 
                 <div class="slide" id="title-slide">
-                    <style>
+                    <style scoped>
                         #title-slide h1, #title-slide h2 { color: black; }
                         #title-slide h1 { letter-spacing: -2px; font-size: 70px; }
                         #title-slide h2 { margin-top: 1em; font-size: 36px; color: #665544; }
@@ -86,14 +86,14 @@ Brad Neuberg
                 </div>
 
                 <div class="slide" id="summary-slide">
-                    <style>
+                    <style scoped>
                         #summary-slide ol { column-count: 2; }
                     </style>
                     <section>
                     <h2>Sommaire</h2>
                     <ol>
+                        <li>Vue d’ensemble
                         <li>La petite histoire...
-                        <li>Dans les grandes lignes
                         <li>Versions 0.9, 1.0. 1.1
                         <li>URI, URL, URN
                         <li>Verbes
@@ -101,7 +101,6 @@ Brad Neuberg
                         <li>Négotiation de contenu
                         <li>Requêtes conditionnelles
                         <li>Plage de réponse et réponse partielle
-                        <li>Entêtes client, serveur
                         <li>Gestion du cache
                         <li>Authentification
                         <li>SSL/TLS
@@ -112,42 +111,27 @@ Brad Neuberg
                     </section>
                 </div>
 
-                <div class="slide" id="story-slide">
-                    <section>
-                    <h2>La petite histoire...</h2>
-                    <ul>
-                        <li>En 1989, au <abbr title="Conseil Européen pour la Recherche Nucléaire">CERN</abbr>,
-                        <li><a href="http://www.w3.org/People/Berners-Lee/">Tim Berners-Lee</a> et <a href="http://www.robertcailliau.eu/Welcome-en.html">Robert Cailliau</a>
-                        <li>propose un système hypertexte
-                        <li>bâti sur <abbr title="Transmission Control Protocol">TCP</abbr>/<abbr title="Internet Protocol">IP</abbr>.
-                        <li>En 1991, devient HTTP/0.9
-                        <li>En 1993, le <abbr title="National Center for Supercomputing Applications">NCSA</abbr> créé <a href="ftp://ftp.ncsa.uiuc.edu/Mosaic/">Mosaic</a> et <a href="http://httpd.apache.org/ABOUT_APACHE.html">HTTPd</a>
-                        <li>En 1996, <a href="http://tools.ietf.org/html/rfc1945"><abbr title="Request for comment">RFC</abbr> 1945</a> : HTTP/1.0
-                        <li>En 1997, <a href="http://tools.ietf.org/html/rfc2068"><abbr title="Request for comment">RFC</abbr> 2068</a> : HTTP/1.1
-                        <li>En 2000, <a href="http://www.ics.uci.edu/~fielding/">Roy Fielding</a> publie <a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Architectural Styles and the Design of Network-based Software Architectures</a>
-                        <li>En 2009, Google <a href="http://googleresearch.blogspot.com/2009/11/2x-faster-web.html">propose</a> <a href="http://www.chromium.org/spdy">SPDY</a>.
-                    </ul>
+                <div class="slide" id="overview-title-slide">
+                    <section class="middle">
+                    <h2>Vue d’ensemble</h2>
                     </section>
                 </div>
-
                 <div class="slide" id="overview-model-slide">
                     <section>
-                    <h2>Dans les grandes lignes : modèle</h2>
-                    <p class="center"><img src="https://docs.google.com/drawings/pub?id=13JohKX0LOXs74gu-DB8gKaSY_OIB050vX14_lKBp_HQ&w=574&h=448" title="Couches réseau" /></p>
+                    <h2>Modèle OSI</h2>
+                    <p class="center"><img src="https://docs.google.com/drawings/pub?id=13JohKX0LOXs74gu-DB8gKaSY_OIB050vX14_lKBp_HQ&amp;w=574&amp;h=448" title="Couches réseau" alt="Couches réseau" /></p>
                     </section>
                 </div>
                 <div class="slide" id="network-diagram-slide">
                     <section>
-                    <h2>Dans les grandes lignes : architecture réseau</h2>
-                    <p class="center"><img src="https://docs.google.com/drawings/pub?id=1ggKV4njxl4zbp3ASytetj2zgf2jM22acs5B1XZOoU24&w=960&h=720" title="Diagramme réseau HTTP" /></p>
+                    <h2>Architecture réseau</h2>
+                    <p class="center"><img src="https://docs.google.com/drawings/pub?id=1ggKV4njxl4zbp3ASytetj2zgf2jM22acs5B1XZOoU24&amp;w=960&amp;h=720" title="Diagramme réseau HTTP" alt="Diagramme réseau HTTP" /></p>
                     </section>
                 </div>
-
-
-          <div class="slide" id="overview-example-slide">
-              <section>
-              <h2>Dans les grandes lignes : exemple</h2>
-              <pre>➜  ~  telnet www.google.fr 80 
+                <div class="slide" id="overview-example-slide">
+                    <section>
+                    <h2>HTTP à la main</h2>
+                    <pre>➜  ~  telnet www.google.fr 80 
 Trying 209.85.148.99...
 Connected to www.l.google.com.
 Escape character is '^]'.
@@ -166,59 +150,53 @@ Server: gws
 &lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;...</pre>
               </section>
           </div>
-
+          <div class="slide" id="overview-live-http-headers-example-slide">
+              <section>
+              <h2>Avec des outils : Live HTTP Headers</h2>
+              <p><img src="imgs/livehttpheaders.png" style="border:1px solid black; width: 800px;" alt="LiveHTTPHeaders" title="LiveHTTPHeadesr" /></p>
+              </section>
+          </div>
           <div class="slide" id="request-diagram-slide">
               <section>
-              <h2>Dans les grandes lignes : modèle</h2>
+              <h2>Séquence</h2>
               <p class="center"><img src="https://docs.google.com/drawings/pub?id=1Q_bxxPigoJG1iQlL8lBQOjzv-zqw7UiSd05Q8z3gnuE&amp;w=880&amp;h=600" title="Diagramme requête HTTP" /></p>
               </section>
           </div>
 
-          <div class="slide" id="http-0-9-slide">
-              <section>
-              <h2>HTTP 0.9</h2>
-              <ul>
-                  <li>en cours de développement dans les années 91~95
-                  <li>verbe GET
-                  <li>URI
-                  <li>puis code de retour (status code)
-                  <li>puis l’entête content-type
-                  <li>Sans état
-                  <li>mais les cookies apparaissent par <a href="http://www.montulli.org/lou">Lou Montulli</a> en 94 pour une boutique d’ecommerce
-              </ul>
+          <div class="slide" id="intro-title-slide">
+              <section class="middle">
+              <h2>La petite histoire...</h2>
               </section>
           </div>
-
-          <div class="slide" id="http-1-0-slide">
+          <div class="slide" id="story-slide">
               <section>
-              <h2>HTTP 1.0</h2>
+              <h2>La petite histoire...</h2>
               <ul>
-                  <li>en 1996, <a href="http://tools.ietf.org/html/rfc1945"><abbr title="Request for comment">RFC</abbr> 1945</a>
-                  <li>verbe GET, POST, HEAD mais aussi PUT, DELETE, LINK, UNLINK
-                  <li>standardisation des entêtes, du formatage des réponses, des codes d’erreurs
-                  <li>cache côté client via les en‐têtes Last-modified, Pragma, Expires et la compression
-              </ul>
-              </section>
-          </div>
-
-          <div class="slide" id="http-1-1-slide">
-              <section>
-              <h2>HTTP 1.1</h2>
-              <ul>
+                  <li>En 1989, au <abbr title="Conseil Européen pour la Recherche Nucléaire">CERN</abbr>,
+                  <li><a href="http://www.w3.org/People/Berners-Lee/">Tim Berners-Lee</a> et <a href="http://www.robertcailliau.eu/Welcome-en.html">Robert Cailliau</a>
+                  <li>propose un système hypertexte
+                  <li>bâti sur <abbr title="Transmission Control Protocol">TCP</abbr>/<abbr title="Internet Protocol">IP</abbr>.
+                  <li>En 1991, devient HTTP/0.9
+                  <li>En 1993, le <abbr title="National Center for Supercomputing Applications">NCSA</abbr> créé <a href="ftp://ftp.ncsa.uiuc.edu/Mosaic/">Mosaic</a> et <a href="http://httpd.apache.org/ABOUT_APACHE.html">HTTPd</a>
+                  <li>En 1996, <a href="http://tools.ietf.org/html/rfc1945"><abbr title="Request for comment">RFC</abbr> 1945</a> : HTTP/1.0
                   <li>En 1997, <a href="http://tools.ietf.org/html/rfc2068"><abbr title="Request for comment">RFC</abbr> 2068</a> : HTTP/1.1
-                  <li>OPTIONS, CONNECT et TRACE (<del>LINK</del>, <del>UNLINK</del>),
-                  <li>en-tête Host obligatoire
-                  <li>négociation de contenu et de langage (Accept, Accept-Language, Accept-Charset)
-                  <li>pipelining via l’entête Connection: Keepalive 
-                  <li>découpe de la réponse en plusieurs morceaux via Transfer-Encoding: chunked
+                  <li>En 2000, <a href="http://www.ics.uci.edu/~fielding/">Roy Fielding</a> publie sa thèse <a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Architectural Styles and the Design of Network-based Software Architectures</a> (<a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm"><abbr title="Representational state transfer">REST</abbr></a>)
+                  <li><a href="http://www.w3.org/Protocols/">19 révisions</a> de HTTP/1.1 entre 2007 et 2012,
+                  <li>En 2009, Google <a href="http://googleresearch.blogspot.com/2009/11/2x-faster-web.html">propose</a> <a href="http://www.chromium.org/spdy">SPDY</a>,
+                  <li>En 2012, le groupe de travail <a href="https://tools.ietf.org/wg/httpbis/">httpbis</a> de l’<a href="https://ietf.org/"><abbr title="Internet Engineering Task Force">IETF</abbr></a> planche sur HTTP 2.0
               </ul>
               </section>
           </div>
 
+          <div class="slide" id="URI-URL-URN-title-slide">
+              <section class="middle">
+              <h2>URI / URL / URN</h2>
+              </section>
+          </div>
           <div class="slide" id="URI-URL-URN-slide">
               <section>
               <h2>URI / URL / URN</h2>
-              <img width="200" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/URI_Euler_Diagram_no_lone_URIs.svg" style="float: left; margin: .5em 2em 0 0">
+              <img width="200" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/URI_Euler_Diagram_no_lone_URIs.svg" style="float: left; margin: .5em 2em 0 0" alt="URN / URL / URI" title="URN / URL / URI" />
               <p>Une <abbr title="Uniform Resource Identifier">URI</abbr> identifie.</p>
               <p>Une <abbr title="Uniform Resource Locator">URL</abbr> identifie et localise.</p>
               <p>une <abbr title="Uniform Resource Name">URN</abbr> identifie et nomme.</p>
@@ -238,8 +216,61 @@ Server: gws
           </div>
 
 
+          <div class="slide" id="versions-details-title-slide">
+              <section class="middle">
+              <h2>HTTP 0.9, 1.0 et 1.1</h2>
+              </section>
+          </div>
+          <div class="slide" id="http-0-9-slide">
+              <section>
+              <h2>HTTP 0.9</h2>
+              <ul>
+                  <li>n’est <strong>pas</strong> un standard
+                  <li>n’est pas figé, constantes évolutions
+                  <li>en cours de développement dans les années 91~95
+                  <li>un seul verbe : GET
+                  <li>introduit le concept d’URI
+                  <li>introduit le code de retour (status code)
+                  <li>puis l’entête content-type
+                  <li>sans état...
+                  <li>mais les cookies apparaissent par <a href="http://www.montulli.org/lou">Lou Montulli</a> en 94 pour une boutique d’ecommerce
+              </ul>
+              </section>
+          </div>
+          <div class="slide" id="http-1-0-slide">
+              <section>
+              <h2>HTTP 1.0</h2>
+              <ul>
+                  <li>en 1996, <a href="http://tools.ietf.org/html/rfc1945"><abbr title="Request for comment">RFC</abbr> 1945</a>
+                  <li>verbe GET, POST, HEAD mais aussi PUT, DELETE, LINK, UNLINK
+                  <li>standardisation des entêtes, du formatage des réponses, des codes d’erreurs
+                  <li>cache côté client via les en‐têtes Last-modified, Pragma, Expires et la compression
+              </ul>
+              </section>
+          </div>
+          <div class="slide" id="http-1-1-slide">
+              <section>
+              <h2>HTTP 1.1</h2>
+              <ul>
+                  <li>En 1997, <a href="http://tools.ietf.org/html/rfc2068"><abbr title="Request for comment">RFC</abbr> 2068</a> : HTTP/1.1
+                  <li>OPTIONS, CONNECT et TRACE (<del>LINK</del>, <del>UNLINK</del>),
+                  <li>en-tête Host obligatoire
+                  <li>négociation de contenu et de langage (Accept, Accept-Language, Accept-Charset)
+                  <li>pipelining via l’entête Connection: Keepalive 
+                  <li>découpe de la réponse en plusieurs morceaux via Transfer-Encoding: chunked
+                  <li><a href="http://www.w3.org/Protocols/">19 révisions</a> entre 2007 et 2012
+              </ul>
+              </section>
+          </div>
+
+
+          <div class="slide" id="verbs-title-slide">
+              <section class="middle">
+              <h2>Verbes</h2>
+              </section>
+          </div>
           <div class="slide" id="verbs-slide">
-              <style>
+              <style scoped>
                   #verbs-slide .used span { font-weight: bold; } 
                   #verbs-slide span:after { color: #654; margin-left: .5em;  font-size: .7em; vertical-align: super; font-weight: normal;  }
                   #verbs-slide .idempotent span:after { content: "idempotent"; }
@@ -261,8 +292,13 @@ Server: gws
               </section>
           </div>
 
+          <div class="slide" id="status-code-title-slide">
+              <section class="middle">
+              <h2>Code de retour (status code)</h2>
+              </section>
+          </div>
           <div class="slide" id="status-code-slide">
-              <style>
+              <style scoped>
                   #status-code-slide ul > li > ul { 
                       max-height: 90px; overflow-y: auto;border: 1px dotted #654;
                       font-size: 10px; column-count: 2;
@@ -365,111 +401,14 @@ Server: gws
               </section>
           </div>
 
-          <div class="slide" id="client-header-slide">
-              <section>
-              <h2>Entêtes du client</h2>
-              <ul>
-                  <li>Accept: text/plain
-                  <li>Accept: text/html; q=1.0, text/*; q=0.8, image/gif; q=0.6, image/jpeg; q=0.6, image/*; q=0.5, */*; q=0.1
-                  <li>Accept-Charset: utf-8
-                  <li>Accept-Encoding: gzip, deflate
-                  <li>Accept-Language: en-US
-                  <li>Accept-Language: de; q=1.0, en; q=0.5
-                  <li>Accept-Datetime: Thu, 31 May 2007 20:35:00 GMT
-                  <li>Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
-                  <li>Cache-Control: no-cache
-                  <li>Connection: keep-alive
-                  <li>Cookie: $Version=1; Skin=new;
-                  <li>Content-Length: 348
-                  <li>Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==
-                  <li>Content-Type: application/x-www-form-urlencoded
-                  <li>Date: Tue, 15 Nov 1994 08:12:31 GMT
-                  <li>Expect: 100-continue
-                  <li>From: user@example.com
-                  <li>Host: en.wikipedia.org:80
-                  <li>Host: en.wikipedia.org
-                  <li>If-Match: "737060cd8c284d8af7ad3082f209582d"
-                  <li>If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT
-                  <li>If-None-Match: "737060cd8c284d8af7ad3082f209582d"
-                  <li>If-Range: "737060cd8c284d8af7ad3082f209582d"
-                  <li>If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT
-                  <li>Max-Forwards: 10
-                  <li>Pragma: no-cache
-                  <li>Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
-                  <li>Range: bytes=500-999
-                  <li>Referer: http://en.wikipedia.org/wiki/Main_Page
-                  <li>TE: trailers, deflate
-                  <li>Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11
-                  <li>User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/12.0
-                  <li>Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)
-                  <li>Warning: 199 Miscellaneous warning
-                  <li>Example
-                  <li>X-Requested-With: XMLHttpRequest
-                  <li>DNT: 1 (Do Not Track Enabled)
-                  <li>DNT: 0 (Do Not Track Disabled)
-                  <li>X-Forwarded-For: client1, proxy1, proxy2
-                  <li>X-Forwarded-For: 129.78.138.66, 129.78.64.103
-                  <li>x-att-deviceid: MakeModel/Firmware
-                  <li>x-wap-profile: http://wap.samsungmobile.com/uaprof/SGH-I777.xml
-                  <li>Proxy-Connection: keep-alive
-              </ul>
+          <div class="slide" id="cookie-title-slide">
+              <section class="middle">
+              <h2>Les Cookies</h2>
               </section>
           </div>
-
-          <div class="slide" id="server-header-slide">
+          <div class="slide" id="cookie-example-slide">
               <section>
-              <h2>Entêtes du serveur</h2>
-              <ul>
-                  <li>Access-Control-Allow-Origin: *
-                  <li>Accept-Ranges: bytes
-                  <li>Age: 12
-                  <li>Allow: GET, HEAD
-                  <li>Cache-Control: max-age=3600
-                  <li>Connection: close
-                  <li>Content-Encoding: gzip
-                  <li>Content-Language: da
-                  <li>Content-Length: 348
-                  <li>Content-Location: /index.htm
-                  <li>Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==
-                  <li>Content-Disposition: attachment; filename="fname.ext"
-                  <li>Content-Range: bytes 21010-47021/47022
-                  <li>Content-Type: text/html; charset=utf-8
-                  <li>Date: Tue, 15 Nov 1994 08:12:31 GMT
-                  <li>ETag: "737060cd8c284d8af7ad3082f209582d"
-                  <li>Expires: Thu, 01 Dec 1994 16:00:00 GMT
-                  <li>Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT
-                  <li>Link: </feed>; rel="alternate"[22]
-                  <li>Location: http://www.w3.org/pub/WWW/People.html
-                  <li>P3P: CP="This is not a P3P policy! See http://www.google.com/support/accounts/bin/answer.py?hl=en&answer=151657 for more info."
-                  <li>Pragma: no-cache
-                  <li>Proxy-Authenticate: Basic
-                  <li>Refresh: 5; url=http://www.w3.org/pub/WWW/People.html
-                  <li>Retry-After: 120
-                  <li>Server: Apache/2.4.1 (Unix)
-                  <li>Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1
-                  <li>Strict-Transport-Security: max-age=16070400; includeSubDomains
-                  <li>Trailer: Max-Forwards
-                  <li>Transfer-Encoding: chunked
-                  <li>Vary: *
-                  <li>Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)
-                  <li>Warning: 199 Miscellaneous warning
-                  <li>WWW-Authenticate: Basic
-                  <li>X-Frame-Options: deny
-                  <li>X-XSS-Protection: 1; mode=block
-                  <li>X-Content-Type-Options: nosniff
-                  <li>X-Forwarded-Proto: https
-                  <li>Front-End-Https: on
-                  <li>X-Powered-By: PHP/5.4.0
-                  <li>X-UA-Compatible: IE=EmulateIE7
-                  <li>X-UA-Compatible: IE=edge
-                  <li>X-UA-Compatible: Chrome=1
-              </ul>
-              </section>
-          </div>
-
-          <div class="slide" id="cookie-slide">
-              <section>
-              <h2>Cookie</h2>
+              <h2>Exemple</h2>
               <ol>
                   <li>Client <pre>GET / HTTP/1.1
 Host: www.exemple.org
@@ -498,15 +437,16 @@ Cookie: name=value
                   <li>Cookie de session
                   <li>Cookie chiffré 
                   <li>Cookie "first/third party"
+                  <li>Entête <a href="https://fr.wikipedia.org/wiki/Do_Not_Track"><abbr title="Do Not Track">DNT</abbr></a>
+                  <li><a href="https://fr.wikipedia.org/wiki/P3P"><abbr title="Platform for Privacy Preferences">P3P</abbr></a>
               </ul>
               </section>
           </div>
 
           <div class="slide" id="cookie-details-2-slide">
               <section>
-              <h2>Cookie</h2>
-              <p>
-              <img width="500" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/HTTP-Cookie-Google.svg">
+              <h2>Attributs</h2>
+              <p><img width="500" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/HTTP-Cookie-Google.svg" alt="Http cookie" title="HTTP cookie" /></p>
               <h3>Attributs facultatifs :</h3>
               <ul>
                   <li>date d'expiration (sans, cookie supprimé lorsque le navigateur est fermé), 
@@ -514,18 +454,47 @@ Cookie: name=value
                   <li>un chemin,
                   <li>type de connexion prévu (chiffrée ou non) 
               </ul>
-              </p>
+              </section>
+          </div>
+          <div class="slide" id="cookie-security-demo-slide">
+              <section class="middle">
+              <h2>Les Cookies</h2>
+              <h3>Sécurité</h3>
+              <strong>Démo sur <a href="http://blog.valtech.fr/wp-login">blog.valtech.fr</a> avec <a href="http://livehttpheaders.mozdev.org/">LivehTTPHeaders</a> et telnet</strong>
               </section>
           </div>
           <div class="slide" id="cookie-security-slide">
               <section>
-              <h2>Cookie - Sécurité</h2>
-              <h3>Vol de cookie</h3>
-              <p><a href="http://codebutler.com/firesheep?c=1"><img src="imgs/firesheep.png">Firesheep</a></p>
-              <h3>Forge de cookie</h3>
-              <p><a href="http://www.cgisecurity.com/lib/CookiePoisoningByline.pdf">Cookie Poisoning</a> <small>(pdf)</small></p>
+              <h2>Vol de cookie (cookie hikacking) via Firesheep</h2>
+              <p><a href="http://codebutler.com/firesheep?c=1"><img src="imgs/firesheep.png" alt="Firesheep" title="Firesheep" /></a></p>
+              <h2>Forge de cookie (cookie poisoning)</h2>
               </section>
           </div>
+
+          <div class="slide" id="content-negociation-title-slide">
+              <section class="middle">
+              <h2>Négociation de contenu</h2>
+              </section>
+          </div>
+          <div class="slide" id="content-negociation-basics-slide">
+              <section>
+              <h2>Négociation de contenu</h2>
+              <ol>
+                  <li>Client <pre>GET / HTTP/1.1
+Host: www.exemple.org
+Accept: text/html; q=1.0, text/*; q=0.8, image/gif; q=0.6, image/jpeg; q=0.6, image/*; q=0.5, */*; q=0.1
+Accept-Charset: utf-8
+Accept-Encoding: gzip, deflate
+Accept-Language: fr-FR; q=1.0, en; q=0.5
+... </pre>
+              <li>Serveur <pre>HTTP/1.1 200 OK
+Content-type: application/json; charset=utf-8
+Content-Encoding: gzip
+Content-Language: en-US
+...</pre>
+            </ol>
+            </section>
+        </div>
 
           <div class="slide" id="content-negociation-slide">
               <section>
@@ -547,24 +516,11 @@ Content-Language: en-US
               </section>
           </div>
 
-
-
-          <div class="slide" id="conditionnal-request-slide">
-              <section>
-              <h2>Requêtes conditionnelles</h2>
-              <h3>Client</h3>
-              <ul>
-                  <li>If-Match: "737060cd8c284d8af7ad3082f209582d"
-                  <li>If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT
-                  <li>If-None-Match: "737060cd8c284d8af7ad3082f209582d"
-                  <li>If-Range: "737060cd8c284d8af7ad3082f209582d"
-                  <li>If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT
-              </ul>
-              <ul>
-              </ul>
+          <div class="slide" id="cache-title-slide">
+              <section class="middle">
+              <h2>Gestion du cache</h2>
               </section>
           </div>
-
           <div class="slide" id="cache-slide">
               <section>
               <h2>Cache</h2>
@@ -584,10 +540,30 @@ Content-Language: en-US
               </ul>
               </section>
           </div>
+          <div class="slide" id="cache-conditionnal-slide">
+              <section>
+              <h2>Requêtes conditionnelles</h2>
+              <h3>Client</h3>
+              <ul>
+                  <li>If-Match: "737060cd8c284d8af7ad3082f209582d"
+                  <li>If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT
+                  <li>If-None-Match: "737060cd8c284d8af7ad3082f209582d"
+                  <li>If-Range: "737060cd8c284d8af7ad3082f209582d"
+                  <li>If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT
+              </ul>
+              <ul>
+              </ul>
+              </section>
+          </div>
 
+          <div class="slide" id="partial-request-title-slide">
+              <section class="middle">
+              <h2>Réponse partielle</h2>
+              </section>
+          </div>
           <div class="slide" id="partial-request-slide">
               <section>
-              <h2>Plage de réponse et réponse partielle</h2>
+              <h2>Réponse partielle</h2>
               <ol>
                   <li>Client <pre>GET / HTTP/1.1
 Host: www.exemple.org
@@ -599,9 +575,15 @@ Content-Type: video/mp4
 Content-type: video/mp4
 Range: bytes=385000
  ...</pre>
+              </ol>
               </section>
           </div>
 
+          <div class="slide" id="authentification-title-slide">
+              <section class="middle">
+              <h2>Authenfication</h2>
+              </section>
+          </div>
           <div class="slide" id="authentification-basic-slide">
               <section>
               <h2>Authenfication basique</h2>
@@ -625,7 +607,6 @@ Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
             </code>
             </section>
         </div>
-
         <div class="slide" id="authentification-digest-slide">
             <section>
             <h2>Authenfication Digest</h2>
@@ -651,21 +632,31 @@ cnonce="0a4f113b",
 response="6629fae49393a05397450978507c4ef1",
 opaque="5ccc069c403ebaf9f0171e9517f40e41"
 </pre>
-<li>Serveur <pre>HTTP/1.1 HTTP/1.0 200 OK
             </ol>
         </section>
         </div>
 
+        <div class="slide" id="ssl-tls-title-slide">
+            <section class="middle">
+            <h2>SSL/TLS</h2>
+            </section>
+        </div>
         <div class="slide" id="ssl-tls-slide">
               <section>
               <h2>SSL/TLS</h2>
               <h3>Client</h3>
               <ul>
                   <li>Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11
+                  <li>HSTS is HTTPS Strict Transport Security: a way for sites to elect to always use HTTPS
               </ul>
               </section>
           </div>
 
+         <div class="slide" id="extension-title-slide">
+             <section class="middle">
+             <h2>Extension</h2>
+             </section>
+         </div>
           <div class="slide" id="extension-slide">
               <section>
               <h2>Extension</h2>
@@ -675,13 +666,19 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"
               </section>
           </div>
 
+          <div class="slide" id="spdy-http2-title-slide">
+              <section class="middle">
+              <h2>SPDY / HTTP 2.0</h2>
+              </section>
+          </div>
           <div class="slide" id="spdy-slide">
               <section>
               <h2>Speedy</h2>
-              <p></p>
+              <p>
+              <a href="chrome://net-internals/#spdy">chrome://net-internals/#spdy</a> (Chrome)
+              </p>
               </section>
           </div>
-
           <div class="slide" id="http2-slide">
               <section>
               <h2>HTTP 2.0</h2>
@@ -689,22 +686,120 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"
               </section>
           </div>
 
-          <div class="slide" id="tools-slide">
-              <section>
-              <h2>Outils</h2>
-              <p></p>
+          <div class="slide" id="tools-and-resources-title-slide">
+              <section class="middle">
+              <h2>SPDY / HTTP 2.0</h2>
               </section>
           </div>
-
-          <div class="slide" id="resources-slide">
+          <div class="slide" id="tools-and-resources-slide">
               <section>
-              <h2>Resources</h2>
+              <h2>Outils et resources</h2>
               <ul>
-                  <li><a href="http://rsstodolist.appspot.com/?n=http&amp;l=100">http://rsstodolist.appspot.com/?name=http</a>
-                  <li><a href="http://viewdns.info/">http://viewdns.info/</a>
+                  <li>telnet, curl, wget,
+                  <li><a href="http://viewdns.info/">http://viewdns.info/</a>, boite à outils en ligne sur HTTP,
+                  <li><a href="http://livehttpheaders.mozdev.org/">Live HTTP Headers</a> pour Firefox,
+                  <li><a href="http://htty.github.com">htty</a>, une console http,
+                  <li><a href="http://httpie.org">HTTPie</a>, curl pour humain,
+                  <li><a href="http://rsstodolist.appspot.com/?n=http&amp;l=100">http://rsstodolist.appspot.com/?name=http</a>, toutes les références.
               </ul>
               </section>
           </div>
+
+<!--
+    <h2>Entêtes du client</h2>
+    <ul>
+        <li>Accept: text/plain
+        <li>Accept: text/html; q=1.0, text/*; q=0.8, image/gif; q=0.6, image/jpeg; q=0.6, image/*; q=0.5, */*; q=0.1
+        <li>Accept-Charset: utf-8
+        <li>Accept-Encoding: gzip, deflate
+        <li>Accept-Language: en-US
+        <li>Accept-Language: de; q=1.0, en; q=0.5
+        <li>Accept-Datetime: Thu, 31 May 2007 20:35:00 GMT
+        <li>Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+        <li>Cache-Control: no-cache
+        <li>Connection: keep-alive
+        <li>Cookie: $Version=1; Skin=new;
+        <li>Content-Length: 348
+        <li>Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==
+        <li>Content-Type: application/x-www-form-urlencoded
+        <li>Date: Tue, 15 Nov 1994 08:12:31 GMT
+        <li>Expect: 100-continue
+        <li>From: user@example.com
+        <li>Host: en.wikipedia.org:80
+        <li>Host: en.wikipedia.org
+        <li>If-Match: "737060cd8c284d8af7ad3082f209582d"
+        <li>If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT
+        <li>If-None-Match: "737060cd8c284d8af7ad3082f209582d"
+        <li>If-Range: "737060cd8c284d8af7ad3082f209582d"
+        <li>If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT
+        <li>Max-Forwards: 10
+        <li>Pragma: no-cache
+        <li>Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+        <li>Range: bytes=500-999
+        <li>Referer: http://en.wikipedia.org/wiki/Main_Page
+        <li>TE: trailers, deflate
+        <li>Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11
+        <li>User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/12.0
+        <li>Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)
+        <li>Warning: 199 Miscellaneous warning
+        <li>Example
+        <li>X-Requested-With: XMLHttpRequest
+        <li>DNT: 1 (Do Not Track Enabled)
+        <li>DNT: 0 (Do Not Track Disabled)
+        <li>X-Forwarded-For: client1, proxy1, proxy2
+        <li>X-Forwarded-For: 129.78.138.66, 129.78.64.103
+        <li>x-att-deviceid: MakeModel/Firmware
+        <li>x-wap-profile: http://wap.samsungmobile.com/uaprof/SGH-I777.xml
+        <li>Proxy-Connection: keep-alive
+    </ul>
+    <h2>Entêtes du serveur</h2>
+    <ul>
+        <li>Access-Control-Allow-Origin: *
+        <li>Accept-Ranges: bytes
+        <li>Age: 12
+        <li>Allow: GET, HEAD
+        <li>Cache-Control: max-age=3600
+        <li>Connection: close
+        <li>Content-Encoding: gzip
+        <li>Content-Language: da
+        <li>Content-Length: 348
+        <li>Content-Location: /index.htm
+        <li>Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==
+        <li>Content-Disposition: attachment; filename="fname.ext"
+        <li>Content-Range: bytes 21010-47021/47022
+        <li>Content-Type: text/html; charset=utf-8
+        <li>Date: Tue, 15 Nov 1994 08:12:31 GMT
+        <li>ETag: "737060cd8c284d8af7ad3082f209582d"
+        <li>Expires: Thu, 01 Dec 1994 16:00:00 GMT
+        <li>Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT
+        <li>Link: </feed>; rel="alternate"[22]
+        <li>Location: http://www.w3.org/pub/WWW/People.html
+        <li>P3P: CP="This is not a P3P policy! See http://www.google.com/support/accounts/bin/answer.py?hl=en&answer=151657 for more info."
+        <li>Pragma: no-cache
+        <li>Proxy-Authenticate: Basic
+        <li>Refresh: 5; url=http://www.w3.org/pub/WWW/People.html
+        <li>Retry-After: 120
+        <li>Server: Apache/2.4.1 (Unix)
+        <li>Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1
+        <li>Strict-Transport-Security: max-age=16070400; includeSubDomains
+        <li>Trailer: Max-Forwards
+        <li>Transfer-Encoding: chunked
+        <li>Vary: *
+        <li>Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)
+        <li>Warning: 199 Miscellaneous warning
+        <li>WWW-Authenticate: Basic
+        <li>X-Frame-Options: deny
+        <li>X-XSS-Protection: 1; mode=block
+        <li>X-Content-Type-Options: nosniff
+        <li>X-Forwarded-Proto: https
+        <li>Front-End-Https: on
+        <li>X-Powered-By: PHP/5.4.0
+        <li>X-UA-Compatible: IE=EmulateIE7
+        <li>X-UA-Compatible: IE=edge
+        <li>X-UA-Compatible: Chrome=1
+    </ul>
+    </section>
+</div-->
 
       </div> <!-- slides -->
 
