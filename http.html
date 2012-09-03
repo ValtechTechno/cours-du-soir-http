@@ -409,7 +409,7 @@ Server: gws
           </div>
           <div class="slide" id="cookie-example-slide">
               <section>
-              <h2>Exemple</h2>
+              <h2>Les Cookies : exemple</h2>
               <ol>
                   <li>Client <pre>GET / HTTP/1.1
 Host: www.exemple.org
@@ -428,47 +428,48 @@ Cookie: name=value
 
           <div class="slide" id="cookie-details-slide">
               <section>
-              <h2>Cookie</h2>
+              <h2>Les Cookies</h2>
               <ul>
-                  <li>Défini pour un nom de domaine complet (www.domain.com) par défaut
+                  <li>Défini pour un nom de domaine complet par défaut <small>(www.domain.com)</small>
                   <li>limité à 20 cookies par domaine, d’environ 4000 caractères
-                  <li>Envoyé à chaque requête (html, JS, Ajax, images, etc)
+                  <li>Envoyé à chaque requête <small>(html, JS, Ajax, images, etc)</small>
                   <li>Cookie de session
                   <li>Cookie chiffré 
                   <li>Cookie "first/third party"
                   <li>Entête <a href="https://fr.wikipedia.org/wiki/Do_Not_Track"><abbr title="Do Not Track">DNT</abbr></a>
                   <li>Entête <a href="https://fr.wikipedia.org/wiki/P3P"><abbr title="Platform for Privacy Preferences">P3P</abbr></a>
-                  <li>Les cookies empêchent aux serveurs proxy de cacher les requêtes (Cache-Control: public|private) d’où l’intérêt de servir les ressources communes à tous les clients (images, css, js) depuis un autre domaine (static.domain.com)
+                  <li>Les cookies empêchent, par défaut, aux serveurs proxy de cacher les requêtes d’où l’intérêt de servir les ressources communes à tous les clients <small>(images, css, js)</small> depuis un autre domaine <small>(static.domain.com)</small>
               </ul>
               </section>
           </div>
 
           <div class="slide" id="cookie-details-2-slide">
               <section>
-              <h2>Attributs</h2>
+              <h2>Les Cookies : attributs facultatifs</h2>
+              <ul>
+                  <li>date d'expiration <small>(sans, le cookie supprimé lorsque le navigateur est fermé)</small>,
+                  <li>un nom de domaine <small>(pour permettre le "cross-domain")</small>,
+                  <li>un chemin,
+                  <li>type de connexion prévu <small>(chiffrée ou non)</small>.
+              </ul>
+              <h3>Exemple</h3>
 <pre>HTTP/1.1 200 OK
 Cache-Control: private
 Content-Type: text/html
 Set-Cookie: PREF=ID=5e66ffd215b4c5e6:TM=1147099841:LM=1147099841:S=Of69MpWBs23xeSv0; expires=Sun, 17-Jan-2038 19:14:07 GMT; path=/; domain=.google.com</pre>
-              <h3>Attributs facultatifs :</h3>
-              <ul>
-                  <li>date d'expiration (sans, cookie supprimé lorsque le navigateur est fermé), 
-                  <li>un nom de domaine pour permettre le "cross-domain"
-                  <li>un chemin,
-                  <li>type de connexion prévu (chiffrée ou non) 
-              </ul>
               </section>
           </div>
           <div class="slide" id="cookie-security-demo-slide">
               <section class="middle">
-              <h2>Les Cookies</h2>
-              <h3>Sécurité</h3>
-              <strong>Démo sur <a href="http://blog.valtech.fr/wp-login">blog.valtech.fr</a> avec <a href="http://livehttpheaders.mozdev.org/">LivehTTPHeaders</a> et telnet</strong>
+              <h2>Les Cookies : Sécurité</h2>
               </section>
           </div>
           <div class="slide" id="cookie-security-slide">
               <section>
-              <h2>Vol de cookie (cookie hikacking) via Firesheep</h2>
+              <h2>Vol de cookie (cookie hikacking)</h2>
+              <h3>À la main</h3>
+              <p>Démo sur <a href="http://blog.valtech.fr/wp-login">blog.valtech.fr</a> avec <a href="http://livehttpheaders.mozdev.org/">LiveHTTPHeaders</a> et telnet</p>
+              <h3>Via Firesheep</h3>
               <p><a href="http://codebutler.com/firesheep?c=1"><img src="imgs/firesheep.png" alt="Firesheep" title="Firesheep" /></a></p>
               <h2>Forge de cookie (cookie poisoning)</h2>
               </section>
@@ -491,7 +492,7 @@ Accept-Encoding: gzip, deflate
 Accept-Language: fr-FR; q=1.0, en; q=0.5
 ... </pre>
               <li>Serveur <pre>HTTP/1.1 200 OK
-Content-type: application/json; charset=utf-8
+Content-type: text/html; charset=utf-8
 Content-Encoding: gzip
 Content-Language: en-US
 ...</pre>
@@ -503,7 +504,7 @@ Content-Language: en-US
               <section>
               <h2>Négociation de contenu</h2>
               <ol>
-                  <li>Client <pre>GET /shops HTTP/1.1
+                  <li>Client <pre>GET /posts/all HTTP/1.1
 Host: www.exemple.org
 Accept: application/json
 Accept-Charset: utf-8
@@ -535,6 +536,7 @@ Content-Language: en-US
               <h3>Serveur</h3>
               <ul>
                   <li>Cache-Control: max-age=3600
+                  <li>Cache-Control: public|private
                   <li>Age: 12
                   <li>Pragma: no-cache
                   <li>ETag: "737060cd8c284d8af7ad3082f209582d"
