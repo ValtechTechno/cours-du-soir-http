@@ -38,6 +38,7 @@ Brad Neuberg
             section { margin: 2em 2em 0 2em }
             ol li { list-style: decimal inside; }
             ul li { list-style: square outside; }
+            pre { overflow-x: auto; }
         </style>
     </head>
     <body>
@@ -432,13 +433,12 @@ Cookie: name=value
                   <li>Défini pour un nom de domaine complet (www.domain.com) par défaut
                   <li>limité à 20 cookies par domaine, d’environ 4000 caractères
                   <li>Envoyé à chaque requête (html, JS, Ajax, images, etc)
-                  <li>Les cookies empêchent aux serveurs proxy de cacher les requêtes (Cache-Control: public|private)
-                  <li>d’où l’intérêt de servir les ressources communes à tous les clients (images, css, js) depuis un autre domaine (static.domain.com)
                   <li>Cookie de session
                   <li>Cookie chiffré 
                   <li>Cookie "first/third party"
                   <li>Entête <a href="https://fr.wikipedia.org/wiki/Do_Not_Track"><abbr title="Do Not Track">DNT</abbr></a>
-                  <li><a href="https://fr.wikipedia.org/wiki/P3P"><abbr title="Platform for Privacy Preferences">P3P</abbr></a>
+                  <li>Entête <a href="https://fr.wikipedia.org/wiki/P3P"><abbr title="Platform for Privacy Preferences">P3P</abbr></a>
+                  <li>Les cookies empêchent aux serveurs proxy de cacher les requêtes (Cache-Control: public|private) d’où l’intérêt de servir les ressources communes à tous les clients (images, css, js) depuis un autre domaine (static.domain.com)
               </ul>
               </section>
           </div>
@@ -446,7 +446,10 @@ Cookie: name=value
           <div class="slide" id="cookie-details-2-slide">
               <section>
               <h2>Attributs</h2>
-              <p><img width="500" src="imgs/HTTP-Cookie-Google.svg" alt="Http cookie" title="HTTP cookie" /></p>
+<pre>HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: text/html
+Set-Cookie: PREF=ID=5e66ffd215b4c5e6:TM=1147099841:LM=1147099841:S=Of69MpWBs23xeSv0; expires=Sun, 17-Jan-2038 19:14:07 GMT; path=/; domain=.google.com</pre>
               <h3>Attributs facultatifs :</h3>
               <ul>
                   <li>date d'expiration (sans, cookie supprimé lorsque le navigateur est fermé), 
