@@ -101,7 +101,7 @@ Brad Neuberg
                         <li>Codes de retour
                         <li>Cookies
                         <li>Négotiation de contenu
-                        <li>Gestion du cache
+                        <li>Cache
                         <li>Plage de réponse et réponse partielle
                         <li>Authentification
                         <li>SSL/TLS
@@ -522,44 +522,102 @@ Content-Language: en-US
 
           <div class="slide" id="cache-title-slide">
               <section class="middle">
-              <h2>Gestion du cache</h2>
-              </section>
-          </div>
-          <div class="slide" id="cache-slide">
-              <section>
               <h2>Cache</h2>
-              <h3>Client</h3>
-              <ul>
-                  <li>Cache-Control: no-cache
-                  <li>Pragma: no-cache
-              </ul>
-              <h3>Serveur</h3>
-              <ul>
-                  <li>Cache-Control: max-age=3600
-                  <li>Cache-Control: public|private
-                  <li>Age: 12
-                  <li>Pragma: no-cache
-                  <li>ETag: "737060cd8c284d8af7ad3082f209582d"
-                  <li>Expires: Thu, 01 Dec 1994 16:00:00 GMT
-                  <li>Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT
-              </ul>
               </section>
           </div>
-          <div class="slide" id="cache-conditionnal-slide">
+          <div class="slide" id="cache-in-action-slide">
               <section>
-              <h2>Requêtes conditionnelles</h2>
-              <h3>Client</h3>
+              <h2>Cache : En Action</h2>
+              <h3>Chargement initial, sans cache :</h2>
+              <img src="imgs/twitter-1.png" alt="First twitter load" title="First twitter load" />
+              <h3>Rechargement de la même page :</h2>
+              <img src="imgs/twitter-2.png" alt="Second twitter load" title="Second twitter load" />
+              </section>
+          </div>
+          <div class="slide" id="cache-type-slide">
+              <section>
+              <h2>Cache : Introduction</h2>
+              <h3>Qui ?</h3>
               <ul>
-                  <li>If-Match: "737060cd8c284d8af7ad3082f209582d"
-                  <li>If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT
-                  <li>If-None-Match: "737060cd8c284d8af7ad3082f209582d"
-                  <li>If-Range: "737060cd8c284d8af7ad3082f209582d"
-                  <li>If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT
+                  <li>Navigateur / Client
+                  <li>Proxy <small>(squid, équipement réseau/"network appliance")</small>
+                  <li>Reverse-proxy <small>(squid, varnish, etc)</small>
+                  <li><abbr title="Content Delivery Network">CDN</abbr> <small>(Akamai, Amazon Cloud Front, ...)</small>
               </ul>
+              <h3>2 types :</h3>
               <ul>
+                  <li>Cache privé
+                  <li>Cache publique
               </ul>
               </section>
           </div>
+          <div class="slide" id="cache-expires-slide">
+              <section>
+              <h2>Cache : Expires</h2>
+              <pre>Expires: Thu, 01 Dec 1994 16:00:00 GMT</pre>
+              <ul>
+                  <li>Expires &lt; maintenant : invalidation
+                  <li>Expires == maintenant : revalidation à la prochaine requête
+                  <li>Expires &gt; maintenant : caché jusqu’a la date
+              </ul>
+              </section>
+          </div>
+          <div class="slide" id="cache-control-slide">
+              <section>
+              <h2>Cache : Cache-Control</h2>
+              <ul>
+                  <li><code>Cache-Control: private</code> : Cache client
+                  <li><code>Cache-Control: public</code> : Cache client et proxy
+                  <li><code>Cache-Control: no-cache</code> : Cache client et proxy mais revalidation
+                  <li><code>Cache-Control: no-cache=Set-Cookie</code> : Ne pas cacher cet entête
+                  <li><code>Cache-Control: no-store</code> : Cache client ou proxy interdit
+                  <li><code>Cache-Control: must-revalidate</code> : Revalidation après expiration
+                  <li><code>Cache-Control: proxy-revalidate</code> : Idem mais pour les proxies
+                  <li><code>Cache-Control: max-age=xxx</code> : Temps relatif
+                  <li><code>Cache-Control: s-maxage=xxx</code> : Idem mais que pour les proxies
+                  <li><code>Cache-Control: no-transform</code> : Les proxies ne doivent pas transformer la ressource
+              </ul>
+              </section>
+          </div>
+          <div class="slide" id="cache-last-modified-conditionnal-slide">
+              <section>
+              <h2>Cache : Last-Modified et requête conditionnelle</h2>
+<pre>GET /logo.png HTTP/1.1
+...</pre>
+<pre>HTTP/1.1 200 OK
+Cache-Control:private, max-age=31536000
+Date:Mon, 03 Sep 2012 15:05:20 GMT
+Expires:Mon, 03 Sep 2012 15:05:20 GMT
+Last-Modified:Mon, 02 Apr 2012 02:13:37 GMT
+...</pre>
+<pre>GET /logo.png HTTP/1.1
+If-Modified-Since:Mon, 02 Apr 2012 02:13:37 GMT
+Cache-Control: max-age=0
+...</pre>
+<pre>HTTP/1.1 304 Not Modified
+Cache-Control:private, max-age=31536000
+Date:Mon, 03 Sep 2012 15:07:07 GMT
+Expires:Mon, 03 Sep 2012 15:07:07 GMT
+...</pre>
+              </section>
+          </div>
+
+<!-- <ul>
+    <li>Cache-Control: max-age=3600
+    <li>Cache-Control: public|private
+    <li>Age: 12
+    <li>Pragma: no-cache
+    <li>ETag: "737060cd8c284d8af7ad3082f209582d"
+    <li>Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT
+</ul>
+<ul>
+    <li>Cache-Control: no-cache
+    <li>Pragma: no-cache
+    <li>If-Match: "737060cd8c284d8af7ad3082f209582d"
+    <li>If-None-Match: "737060cd8c284d8af7ad3082f209582d"
+    <li>If-Range: "737060cd8c284d8af7ad3082f209582d"
+    <li>If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT
+</ul>-->
 
           <div class="slide" id="partial-request-title-slide">
               <section class="middle">
@@ -652,7 +710,8 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"
               <h3>Client</h3>
               <ul>
                   <li>Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11
-                  <li>HSTS is HTTPS Strict Transport Security: a way for sites to elect to always use HTTPS
+                  <li><a href="http://dev.chromium.org/sts"><abbr title="HTTP Strict Transport Security">HSTS</abbr></a> is HTTPS Strict Transport Security: a way for sites to elect to always use HTTPS
+                  <li><a href="http://pilif.github.com/2008/05/why-is-nobody-using-ssl-client-certificates/">Certificat SSL client</a>
               </ul>
               </section>
           </div>
