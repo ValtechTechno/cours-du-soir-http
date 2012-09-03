@@ -98,10 +98,10 @@ Brad Neuberg
                         <li>URI, URL, URN
                         <li>Verbes
                         <li>Codes de retour
+                        <li>Cookies
                         <li>Négotiation de contenu
-                        <li>Requêtes conditionnelles
-                        <li>Plage de réponse et réponse partielle
                         <li>Gestion du cache
+                        <li>Plage de réponse et réponse partielle
                         <li>Authentification
                         <li>SSL/TLS
                         <li>Extensions (WebDAV,...)
@@ -482,15 +482,15 @@ Cookie: name=value
               <ol>
                   <li>Client <pre>GET / HTTP/1.1
 Host: www.exemple.org
-Accept: text/html; q=1.0, text/*; q=0.8, image/gif; q=0.6, image/jpeg; q=0.6, image/*; q=0.5, */*; q=0.1
+<strong>Accept: text/html; q=1.0, text/*; q=0.8, image/gif; q=0.6, image/jpeg; q=0.6, image/*; q=0.5, */*; q=0.1
 Accept-Charset: utf-8
 Accept-Encoding: gzip, deflate
-Accept-Language: fr-FR; q=1.0, en; q=0.5
+Accept-Language: fr-FR; q=1.0, en; q=0.5</strong>
 ... </pre>
               <li>Serveur <pre>HTTP/1.1 200 OK
-Content-type: application/json; charset=utf-8
+<strong>Content-type: application/json; charset=utf-8
 Content-Encoding: gzip
-Content-Language: en-US
+Content-Language: en-US</strong>
 ...</pre>
             </ol>
             </section>
