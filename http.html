@@ -125,7 +125,7 @@ Brad Neuberg
                 </div>
                 <div class="slide" id="network-diagram-slide">
                     <section>
-                    <h2>Architecture réseau</h2>
+                    <h2>Illustration</h2>
                     <p class="center"><img src="https://docs.google.com/drawings/pub?id=1ggKV4njxl4zbp3ASytetj2zgf2jM22acs5B1XZOoU24&amp;w=960&amp;h=720" title="Diagramme réseau HTTP" alt="Diagramme réseau HTTP" /></p>
                     </section>
                 </div>
@@ -153,7 +153,7 @@ Server: gws
           </div>
           <div class="slide" id="overview-live-http-headers-example-slide">
               <section>
-              <h2>Avec des outils : Live HTTP Headers</h2>
+              <h2>Avec des outils : <a href="http://livehttpheaders.mozdev.org/">Live HTTP Headers</a></h2>
               <p><img src="imgs/livehttpheaders.png" style="border:1px solid black; width: 800px;" alt="LiveHTTPHeaders" title="LiveHTTPHeadesr" /></p>
               </section>
           </div>
@@ -280,14 +280,14 @@ Server: gws
               <section>
               <h2>Verbes</h2>
               <ul>
+                  <li class="safe idempotent used"><span>GET</span> : récupération d’une ressource
                   <li class="safe idempotent used"><span>HEAD</span> : seulement les entêtes
-                  <li class="safe idempotent used"><span>GET</span> : le document
-                  <li class="used"><span>POST</span> : soumission d’un formulaire
-                  <li class="idempotent used"><span>PUT</span>
-                  <li class="idempotent used"><span>DELETE</span>
-                  <li class="safe idempotent"><span>TRACE</span> : echo de la requête
-                  <li class="safe idempotent"><span>OPTIONS</span>
-                  <li class=""><span>CONNECT</span> : SSL/TLS
+                  <li class="used"><span>POST</span> : soumission d’un formulaire / modification d’une ressource
+                  <li class="idempotent used"><span>PUT</span> : création d’une ressource
+                  <li class="idempotent used"><span>DELETE</span> : suppression d’une ressource
+                  <li class="safe idempotent"><span>TRACE</span> : echo de la requête 
+                  <li class="safe idempotent"><span>OPTIONS</span> : Capacités du serveur
+                  <li class=""><span>CONNECT</span> : SSL/TLS pour les proxies
                   <li class=""><span>PATCH</span> : modification partielle <small>(<a href="https://tools.ietf.org/html/rfc5789">RFC 5789</a>, mai 2010)</small>
               </ul>
               </section>
@@ -307,7 +307,7 @@ Server: gws
                   #status-code-slide ul > li > ul > li { padding: 0; }
               </style>
               <section>
-              <h2>Codes de retour</h2>
+              <h2><a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">Codes de retour</a></h2>
               <ul>
                   <li class="100">1xx Informational (3)
                   <ul>
@@ -410,19 +410,17 @@ Server: gws
           <div class="slide" id="cookie-example-slide">
               <section>
               <h2>Les Cookies : exemple</h2>
-              <ol>
-                  <li>Client <pre>GET / HTTP/1.1
+<pre>GET / HTTP/1.1
 Host: www.exemple.org
 ...</pre>
-                  <li>Serveur <pre>HTTP/1.1 200 OK
+<pre>HTTP/1.1 200 OK
 Content-type: text/html
 Set-Cookie: name=value
 ...</pre>
-                  <li>Client <pre>GET /page.html HTTP/1.1
+<pre>GET /page.html HTTP/1.1
 Host: www.exemple.org
 Cookie: name=value
 ...</pre>
-              </ol>
               </section>
           </div>
 
@@ -432,12 +430,12 @@ Cookie: name=value
               <ul>
                   <li>Défini pour un nom de domaine complet par défaut <small>(www.domain.com)</small>
                   <li>limité à 20 cookies par domaine, d’environ 4000 caractères
-                  <li>Envoyé à chaque requête <small>(html, JS, Ajax, images, etc)</small>
                   <li>Cookie de session
                   <li>Cookie chiffré 
                   <li>Cookie "first/third party"
-                  <li>Entête <a href="https://fr.wikipedia.org/wiki/Do_Not_Track"><abbr title="Do Not Track">DNT</abbr></a>
                   <li>Entête <a href="https://fr.wikipedia.org/wiki/P3P"><abbr title="Platform for Privacy Preferences">P3P</abbr></a>
+                  <li>Entête <a href="https://fr.wikipedia.org/wiki/Do_Not_Track"><abbr title="Do Not Track">DNT</abbr></a>
+                  <li>Envoyé à chaque requête <small>(html, JS, Ajax, images, etc)</small>
                   <li>Les cookies empêchent, par défaut, aux serveurs proxy de cacher les requêtes d’où l’intérêt de servir les ressources communes à tous les clients <small>(images, css, js)</small> depuis un autre domaine <small>(static.domain.com)</small>
               </ul>
               </section>
@@ -483,40 +481,40 @@ Set-Cookie: PREF=ID=5e66ffd215b4c5e6:TM=1147099841:LM=1147099841:S=Of69MpWBs23xe
           <div class="slide" id="content-negociation-basics-slide">
               <section>
               <h2>Négociation de contenu</h2>
-              <ol>
-                  <li>Client <pre>GET / HTTP/1.1
+              <h3>Navigateur demandant une page web</h3>
+<pre>GET / HTTP/1.1
 Host: www.exemple.org
 Accept: text/html; q=1.0, text/*; q=0.8, image/gif; q=0.6, image/jpeg; q=0.6, image/*; q=0.5, */*; q=0.1
-Accept-Charset: utf-8
-Accept-Encoding: gzip, deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3
+Accept-Encoding: gzip,deflate
 Accept-Language: fr-FR; q=1.0, en; q=0.5
 ... </pre>
-              <li>Serveur <pre>HTTP/1.1 200 OK
-Content-type: text/html; charset=utf-8
+<pre>HTTP/1.1 200 OK
 Content-Encoding: gzip
+Content-Length: 25719
+Content-type: text/html; charset=UTF-8
 Content-Language: en-US
 ...</pre>
-            </ol>
             </section>
         </div>
 
           <div class="slide" id="content-negociation-slide">
               <section>
               <h2>Négociation de contenu</h2>
-              <ol>
-                  <li>Client <pre>GET /posts/all HTTP/1.1
+              <h3>Client d’API REST</h3>
+<pre>GET /shops/all/address HTTP/1.1
 Host: www.exemple.org
 Accept: application/json
 Accept-Charset: utf-8
 Accept-Encoding: gzip, deflate
 Accept-Language: fr-FR
 ... </pre>
-                  <li>Serveur <pre>HTTP/1.1 200 OK
-Content-type: application/json; charset=utf-8
+<pre>HTTP/1.1 200 OK
 Content-Encoding: gzip
+Content-Length: 25719
+Content-type: application/json; charset=utf-8
 Content-Language: en-US
  ...</pre>
- </ol>
               </section>
           </div>
 
@@ -551,14 +549,16 @@ Content-Language: en-US
               </ul>
               </section>
           </div>
-          <div class="slide" id="cache-expires-slide">
+          <div class="slide" id="cache-date-expires-slide">
               <section>
-              <h2>Cache : Expires</h2>
-              <pre>Expires: Thu, 01 Dec 1994 16:00:00 GMT</pre>
+              <h2>Cache : Date et Expires</h2>
+<pre>Date:Tue, 04 Sep 2012 09:24:26 GMT
+Expires: Thu, 01 Dec 1994 16:00:00 GMT</pre>
               <ul>
-                  <li>Expires &lt; maintenant : invalidation
-                  <li>Expires == maintenant : revalidation à la prochaine requête
-                  <li>Expires &gt; maintenant : caché jusqu’a la date
+                  <li><code>Date</code> obligatoire !
+                  <li><code>Expires &gt; now()</code> : caché jusqu’à la date indiquée puis revalidation
+                  <li><code>Expires == now()</code> : caché mais revalidation à la prochaine requête
+                  <li><code>Expires &lt; now() || Expires == -1</code> : pas de cache
               </ul>
               </section>
           </div>
@@ -585,39 +585,51 @@ Content-Language: en-US
 <pre>GET /logo.png HTTP/1.1
 ...</pre>
 <pre>HTTP/1.1 200 OK
-Cache-Control:private, max-age=31536000
-Date:Mon, 03 Sep 2012 15:05:20 GMT
-Expires:Mon, 03 Sep 2012 15:05:20 GMT
-Last-Modified:Mon, 02 Apr 2012 02:13:37 GMT
+Date: Mon, 03 Sep 2012 15:05:20 GMT
+Expires: Mon, 03 Sep 2012 15:05:20 GMT
+Last-Modified: Mon, 02 Apr 2012 02:13:37 GMT
 ...</pre>
 <pre>GET /logo.png HTTP/1.1
-If-Modified-Since:Mon, 02 Apr 2012 02:13:37 GMT
-Cache-Control: max-age=0
+If-Modified-Since: Mon, 02 Apr 2012 02:13:37 GMT
 ...</pre>
 <pre>HTTP/1.1 304 Not Modified
-Cache-Control:private, max-age=31536000
-Date:Mon, 03 Sep 2012 15:07:07 GMT
-Expires:Mon, 03 Sep 2012 15:07:07 GMT
+Date: Mon, 03 Sep 2012 15:07:07 GMT
+Expires: Mon, 03 Sep 2012 15:07:07 GMT
 ...</pre>
               </section>
           </div>
-
-<!-- <ul>
-    <li>Cache-Control: max-age=3600
-    <li>Cache-Control: public|private
-    <li>Age: 12
-    <li>Pragma: no-cache
-    <li>ETag: "737060cd8c284d8af7ad3082f209582d"
-    <li>Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT
-</ul>
-<ul>
-    <li>Cache-Control: no-cache
-    <li>Pragma: no-cache
-    <li>If-Match: "737060cd8c284d8af7ad3082f209582d"
-    <li>If-None-Match: "737060cd8c284d8af7ad3082f209582d"
-    <li>If-Range: "737060cd8c284d8af7ad3082f209582d"
-    <li>If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT
-</ul>-->
+          <div class="slide" id="cache-etag-conditionnal-slide">
+              <section>
+              <h2>Cache : Entity Tag et requête conditionnelle</h2>
+<pre>GET /logo.png HTTP/1.1
+...</pre>
+<pre>HTTP/1.1 200 OK
+Date: Mon, 03 Sep 2012 15:05:20 GMT
+ETag: "8eca4-205f-17b94c"
+...</pre>
+<pre>GET /logo.png HTTP/1.1
+If-None-Match "8eca4-205f-17b94c"
+...</pre>
+<pre>HTTP/1.1 304 Not Modified
+Date: Mon, 03 Sep 2012 15:07:07 GMT
+ETag: "8eca4-205f-17b94c"
+...</pre>
+            </section>
+          </div>
+          <div class="slide" id="cache-summary-slide">
+              <section>
+              <h2>Cache : Résumé</h2>
+              <ul>
+                  <li>Utilisez <code>Expires</code> ou <code>Cache-Control: max-age</code> sur les contenu statiques <small>(imgs, js, css, pdf, etc)</small>
+                  <li>Renseigner <code>Last-Modified</code> ou <code>ETag</code> pour permettre les requêtes conditionnelles
+                  <li>Cache d’un mois ou d’un an (mais pas plus) et utilisant l’url fingerprinting
+                  <li><code>Cache control: public</code> si SSL/TLS (sinon, pas de cache sous Firefox)
+                  <li>Evitez les paramètres dans les URL (pour les proxies)
+                  <li>N’utilisez pas le cache s’il y a un cookie
+                  <li>Attention au <code>Content-Encoding</code> ou <code>Content-Type</code>
+              </ul>
+              </section>
+          </div>
 
           <div class="slide" id="partial-request-title-slide">
               <section class="middle">
