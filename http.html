@@ -753,20 +753,46 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"
 
         <div class="slide" id="ssl-tls-title-slide">
             <section class="middle">
-            <h2>SSL/TLS</h2>
+            <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr></h2>
             </section>
         </div>
-        <div class="slide" id="ssl-tls-slide">
+        <div class="slide" id="ssl-tls-main-slide">
               <section>
-              <h2>SSL/TLS</h2>
-              <h3>Client</h3>
+              <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Introduction</h2>
               <ul>
-                  <li>Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11
-                  <li><a href="http://dev.chromium.org/sts"><abbr title="HTTP Strict Transport Security">HSTS</abbr></a> is HTTPS Strict Transport Security: a way for sites to elect to always use HTTPS
-                  <li><a href="http://pilif.github.com/2008/05/why-is-nobody-using-ssl-client-certificates/">Certificat SSL client</a>
+                  <li>SSL 1.0 (jamais publique), 2.0 en 1995,  3.0 en 1996 (<a href="https://tools.ietf.org/html/rfc6101"><abbr title="Request for comment">RFC</abbr> 6101</a>),
+                  <li>TLS 1.0 en 1999 (<a href="https://tools.ietf.org/html/rfc2246"><abbr title="Request for comment">RFC</abbr> 2246</a>)
+                  <li>TLS 1.1 en 2006 (<a href="https://tools.ietf.org/html/rfc4346"><abbr title="Request for comment">RFC</abbr> 4346</a>)
+                  <li>TLS 1.2 en 2008 (<a href="https://tools.ietf.org/html/rfc5246"><abbr title="Request for comment">RFC</abbr> 5246</a>)
+                  <li>Mise à jour sur TLS 1.2 en 2011 (<a href="https://tools.ietf.org/html/rfc6176"><abbr title="Request for comment">RFC</abbr> 6176</a>)
+                  <li>TLS utilisé sur <abbr title"HyperText Transfert Protocol">HTTP</abbr>, <abbr title"File Transfert Protocol">FTP</abbr>, <abbr title"Simple Mail Transfert Protocol">SMTP</abbr>, <abbr title"Network News Transfert Protocol">NNTP</abbr> et <abbr title"eXtensible Messaging and Presence Protocol">XMPP</abbr>
+              </ul>
+              <h3>5 principes</h3>
+              <ul>
+                  <li>l'authentification du serveur,
+                  <li>la confidentialité des données échangées,
+                  <li>l'intégrité des données échangées,
+                  <li>de manière optionnelle, l'authentification du <a href="http://pilif.github.com/2008/05/why-is-nobody-using-ssl-client-certificates/">client avec un certificat</a>,
+                  <li>la spontanéité,
+                  <li>la transparence (HTTP over TLS).
               </ul>
               </section>
           </div>
+          <div class="slide" id="ssl-tls-handshake-slide">
+                <section>
+                <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Handshake</h2>
+                </section>
+            </div>
+          <div class="slide" id="ssl-tls-security-slide">
+                <section>
+                <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Securité</h2>
+                <ul>
+                    <li><a href="http://dev.chromium.org/sts"><abbr title="HTTP Strict Transport Security">HSTS</abbr></a> is HTTPS Strict Transport Security: a way for sites to elect to always use HTTPS
+                    <li>en 2011, Thai Duong and Juliano Rizzo démontre <abbr title="Browser Exploit Against SSL/TLS">BEAST</a>, une attaque contre TLS/1.0
+                </ul>
+                </section>
+            </div>
+
 
          <div class="slide" id="extension-title-slide">
              <section class="middle">
@@ -803,11 +829,6 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"
               </section>
           </div>
 
-          <div class="slide" id="tools-and-resources-title-slide">
-              <section class="middle">
-              <h2>SPDY / HTTP 2.0</h2>
-              </section>
-          </div>
           <div class="slide" id="tools-and-resources-slide">
               <section>
               <h2>Outils et resources</h2>
@@ -821,102 +842,6 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"
               </ul>
               </section>
           </div>
-
-<!--
-    <h2>Entêtes du client</h2>
-    <ul>
-        <li>Accept: text/plain
-        <li>Accept: text/html; q=1.0, text/*; q=0.8, image/gif; q=0.6, image/jpeg; q=0.6, image/*; q=0.5, */*; q=0.1
-        <li>Accept-Charset: utf-8
-        <li>Accept-Encoding: gzip, deflate
-        <li>Accept-Language: en-US
-        <li>Accept-Language: de; q=1.0, en; q=0.5
-        <li>Accept-Datetime: Thu, 31 May 2007 20:35:00 GMT
-        <li>Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
-        <li>Cache-Control: no-cache
-        <li>Connection: keep-alive
-        <li>Cookie: $Version=1; Skin=new;
-        <li>Content-Length: 348
-        <li>Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==
-        <li>Content-Type: application/x-www-form-urlencoded
-        <li>Date: Tue, 15 Nov 1994 08:12:31 GMT
-        <li>Expect: 100-continue
-        <li>From: user@example.com
-        <li>Host: en.wikipedia.org:80
-        <li>Host: en.wikipedia.org
-        <li>If-Match: "737060cd8c284d8af7ad3082f209582d"
-        <li>If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT
-        <li>If-None-Match: "737060cd8c284d8af7ad3082f209582d"
-        <li>If-Range: "737060cd8c284d8af7ad3082f209582d"
-        <li>If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT
-        <li>Max-Forwards: 10
-        <li>Pragma: no-cache
-        <li>Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
-        <li>Range: bytes=500-999
-        <li>Referer: http://en.wikipedia.org/wiki/Main_Page
-        <li>TE: trailers, deflate
-        <li>Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11
-        <li>User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/12.0
-        <li>Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)
-        <li>Warning: 199 Miscellaneous warning
-        <li>Example
-        <li>X-Requested-With: XMLHttpRequest
-        <li>DNT: 1 (Do Not Track Enabled)
-        <li>DNT: 0 (Do Not Track Disabled)
-        <li>X-Forwarded-For: client1, proxy1, proxy2
-        <li>X-Forwarded-For: 129.78.138.66, 129.78.64.103
-        <li>x-att-deviceid: MakeModel/Firmware
-        <li>x-wap-profile: http://wap.samsungmobile.com/uaprof/SGH-I777.xml
-        <li>Proxy-Connection: keep-alive
-    </ul>
-    <h2>Entêtes du serveur</h2>
-    <ul>
-        <li>Access-Control-Allow-Origin: *
-        <li>Accept-Ranges: bytes
-        <li>Age: 12
-        <li>Allow: GET, HEAD
-        <li>Cache-Control: max-age=3600
-        <li>Connection: close
-        <li>Content-Encoding: gzip
-        <li>Content-Language: da
-        <li>Content-Length: 348
-        <li>Content-Location: /index.htm
-        <li>Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==
-        <li>Content-Disposition: attachment; filename="fname.ext"
-        <li>Content-Range: bytes 21010-47021/47022
-        <li>Content-Type: text/html; charset=utf-8
-        <li>Date: Tue, 15 Nov 1994 08:12:31 GMT
-        <li>ETag: "737060cd8c284d8af7ad3082f209582d"
-        <li>Expires: Thu, 01 Dec 1994 16:00:00 GMT
-        <li>Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT
-        <li>Link: </feed>; rel="alternate"[22]
-        <li>Location: http://www.w3.org/pub/WWW/People.html
-        <li>P3P: CP="This is not a P3P policy! See http://www.google.com/support/accounts/bin/answer.py?hl=en&answer=151657 for more info."
-        <li>Pragma: no-cache
-        <li>Proxy-Authenticate: Basic
-        <li>Refresh: 5; url=http://www.w3.org/pub/WWW/People.html
-        <li>Retry-After: 120
-        <li>Server: Apache/2.4.1 (Unix)
-        <li>Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1
-        <li>Strict-Transport-Security: max-age=16070400; includeSubDomains
-        <li>Trailer: Max-Forwards
-        <li>Transfer-Encoding: chunked
-        <li>Vary: *
-        <li>Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)
-        <li>Warning: 199 Miscellaneous warning
-        <li>WWW-Authenticate: Basic
-        <li>X-Frame-Options: deny
-        <li>X-XSS-Protection: 1; mode=block
-        <li>X-Content-Type-Options: nosniff
-        <li>X-Forwarded-Proto: https
-        <li>Front-End-Https: on
-        <li>X-Powered-By: PHP/5.4.0
-        <li>X-UA-Compatible: IE=EmulateIE7
-        <li>X-UA-Compatible: IE=edge
-        <li>X-UA-Compatible: Chrome=1
-    </ul>
-    </section>
-</div-->
 
       </div> <!-- slides -->
 
