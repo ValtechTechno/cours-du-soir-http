@@ -39,6 +39,9 @@ Brad Neuberg
             ol li { list-style: decimal inside; }
             ul li { list-style: square outside; }
             pre { overflow-x: auto; }
+            pre.client { background: url("imgs/computer.png") no-repeat 98% 10px, #EADDE8; }
+            pre.server { background: url("imgs/server_lightning.png") no-repeat 98% 10px, #EADDE8; }
+            kbd { white-space: pre; }
         </style>
     </head>
     <body>
@@ -410,14 +413,14 @@ Server: gws
           <div class="slide" id="cookie-example-slide">
               <section>
               <h2>Les Cookies : exemple</h2>
-<pre>GET / HTTP/1.1
+<pre class="client">GET / HTTP/1.1
 Host: www.exemple.org
 ...</pre>
-<pre>HTTP/1.1 200 OK
+<pre class="server">HTTP/1.1 200 OK
 Content-type: text/html
 Set-Cookie: name=value
 ...</pre>
-<pre>GET /page.html HTTP/1.1
+<pre class="client">GET /page.html HTTP/1.1
 Host: www.exemple.org
 Cookie: name=value
 ...</pre>
@@ -451,7 +454,7 @@ Cookie: name=value
                   <li>type de connexion prévu <small>(chiffrée ou non)</small>.
               </ul>
               <h3>Exemple</h3>
-<pre>HTTP/1.1 200 OK
+<pre class="server">HTTP/1.1 200 OK
 Cache-Control: private
 Content-Type: text/html
 Set-Cookie: PREF=ID=5e66ffd215b4c5e6:TM=1147099841:LM=1147099841:S=Of69MpWBs23xeSv0; expires=Sun, 17-Jan-2038 19:14:07 GMT; path=/; domain=.google.com</pre>
@@ -482,14 +485,14 @@ Set-Cookie: PREF=ID=5e66ffd215b4c5e6:TM=1147099841:LM=1147099841:S=Of69MpWBs23xe
               <section>
               <h2>Négociation de contenu</h2>
               <h3>Navigateur demandant une page web</h3>
-<pre>GET / HTTP/1.1
+<pre class="client">GET / HTTP/1.1
 Host: www.exemple.org
 Accept: text/html; q=1.0, text/*; q=0.8, image/gif; q=0.6, image/jpeg; q=0.6, image/*; q=0.5, */*; q=0.1
 Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3
 Accept-Encoding: gzip,deflate
 Accept-Language: fr-FR; q=1.0, en; q=0.5
 ... </pre>
-<pre>HTTP/1.1 200 OK
+<pre class="server">HTTP/1.1 200 OK
 Content-Encoding: gzip
 Content-Length: 25719
 Content-type: text/html; charset=UTF-8
@@ -502,19 +505,49 @@ Content-Language: en-US
               <section>
               <h2>Négociation de contenu</h2>
               <h3>Client d’API REST</h3>
-<pre>GET /shops/all/address HTTP/1.1
+<pre class="client">GET /shops/all/address HTTP/1.1
 Host: www.exemple.org
 Accept: application/json
 Accept-Charset: utf-8
 Accept-Encoding: gzip, deflate
 Accept-Language: fr-FR
 ... </pre>
-<pre>HTTP/1.1 200 OK
+<pre class="server">HTTP/1.1 200 OK
 Content-Encoding: gzip
 Content-Length: 25719
 Content-type: application/json; charset=utf-8
 Content-Language: en-US
  ...</pre>
+              </section>
+          </div>
+
+          <div class="slide" id="partial-request-title-slide">
+              <section class="middle">
+              <h2>Requête et réponse partielle</h2>
+              </section>
+          </div>
+          <div class="slide" id="partial-request-slide">
+              <section>
+              <h2>Requête et réponse partielle</h2>
+<pre class="client">HEAD /2390/2253727548_a413c88ab3_s.jpg HTTP/1.1
+Host: farm3.static.flickr.com</pre>
+<pre class="server">HTTP/1.0 200 OK
+Date: Mon, 05 May 2008 00:33:14 GMT
+Server: Apache/2.0.52 (Red Hat)
+Accept-Ranges: bytes
+Content-Length: 3980
+Content-Type: image/jpeg</pre>
+<pre class="client">GET /2390/2253727548_a413c88ab3_s.jpg HTTP/1.1
+Host: farm3.static.flickr.com
+Range: bytes=0-999</pre>
+<pre class="server">HTTP/1.0 206 Partial Content
+Date: Mon, 05 May 2008 00:36:57 GMT
+Server: Apache/2.0.52 (Red Hat)
+Accept-Ranges: bytes
+Content-Length: 1000
+Content-Range: bytes 0-999/3980
+Content-Type: image/jpeg
+...</pre>
               </section>
           </div>
 
@@ -547,12 +580,17 @@ Content-Language: en-US
                   <li>Cache privé
                   <li>Cache publique
               </ul>
+              <h3>Vocabulaire :</h3>
+              <ul>
+                  <li>Cache hit
+                  <li>Cache miss
+              </ul>
               </section>
           </div>
           <div class="slide" id="cache-date-expires-slide">
               <section>
               <h2>Cache : Date et Expires</h2>
-<pre>Date:Tue, 04 Sep 2012 09:24:26 GMT
+<pre class="server">Date:Tue, 04 Sep 2012 09:24:26 GMT
 Expires: Thu, 01 Dec 1994 16:00:00 GMT</pre>
               <ul>
                   <li><code>Date</code> obligatoire !
@@ -582,17 +620,17 @@ Expires: Thu, 01 Dec 1994 16:00:00 GMT</pre>
           <div class="slide" id="cache-last-modified-conditionnal-slide">
               <section>
               <h2>Cache : Last-Modified et requête conditionnelle</h2>
-<pre>GET /logo.png HTTP/1.1
+<pre class="client">GET /logo.png HTTP/1.1
 ...</pre>
-<pre>HTTP/1.1 200 OK
+<pre class="server">HTTP/1.1 200 OK
 Date: Mon, 03 Sep 2012 15:05:20 GMT
 Expires: Mon, 03 Sep 2012 15:05:20 GMT
 Last-Modified: Mon, 02 Apr 2012 02:13:37 GMT
 ...</pre>
-<pre>GET /logo.png HTTP/1.1
+<pre class="client">GET /logo.png HTTP/1.1
 If-Modified-Since: Mon, 02 Apr 2012 02:13:37 GMT
 ...</pre>
-<pre>HTTP/1.1 304 Not Modified
+<pre class="server">HTTP/1.1 304 Not Modified
 Date: Mon, 03 Sep 2012 15:07:07 GMT
 Expires: Mon, 03 Sep 2012 15:07:07 GMT
 ...</pre>
@@ -601,18 +639,41 @@ Expires: Mon, 03 Sep 2012 15:07:07 GMT
           <div class="slide" id="cache-etag-conditionnal-slide">
               <section>
               <h2>Cache : Entity Tag et requête conditionnelle</h2>
-<pre>GET /logo.png HTTP/1.1
+<pre class="client">GET /logo.png HTTP/1.1
 ...</pre>
-<pre>HTTP/1.1 200 OK
+<pre class="server">HTTP/1.1 200 OK
 Date: Mon, 03 Sep 2012 15:05:20 GMT
 ETag: "8eca4-205f-17b94c"
 ...</pre>
-<pre>GET /logo.png HTTP/1.1
+<pre class="client">GET /logo.png HTTP/1.1
 If-None-Match "8eca4-205f-17b94c"
 ...</pre>
-<pre>HTTP/1.1 304 Not Modified
+<pre class="server">HTTP/1.1 304 Not Modified
 Date: Mon, 03 Sep 2012 15:07:07 GMT
 ETag: "8eca4-205f-17b94c"
+...</pre>
+            </section>
+          </div>
+          <div class="slide" id="cache-vary-slide">
+              <section>
+              <h2>Cache : Vary</h2>
+<pre class="client">GET /file.js HTTP/1.1
+...</pre>
+<pre class="server">HTTP/1.1 200 OK
+Content-Encoding:gzip
+...
+Date:Thu, 06 Sep 2012 13:56:47 GMT
+Expires:Thu, 13 Sep 2012 13:56:47 GMT
+ETag:M0-0eb75f26
+Vary:Accept-Encoding
+...</pre>
+Autre exemple :
+<pre class="client">GET /file HTTP/1.1
+...</pre>
+<pre class="server">HTTP/1.1 200 OK
+Set-Cookie: key=value
+...
+Vary:Cookie
 ...</pre>
             </section>
           </div>
@@ -620,41 +681,19 @@ ETag: "8eca4-205f-17b94c"
               <section>
               <h2>Cache : Résumé</h2>
               <ul>
-                  <li>Utilisez <code>Expires</code> ou <code>Cache-Control: max-age</code> sur les contenu statiques <small>(imgs, js, css, pdf, etc)</small>
-                  <li>Renseigner <code>Last-Modified</code> ou <code>ETag</code> pour permettre les requêtes conditionnelles
-                  <li>Cache d’un mois ou d’un an (mais pas plus) et utilisant l’url fingerprinting
-                  <li><code>Cache control: public</code> si SSL/TLS (sinon, pas de cache sous Firefox)
-                  <li>Evitez les paramètres dans les URL (pour les proxies)
-                  <li>N’utilisez pas le cache s’il y a un cookie
-                  <li>Attention au <code>Content-Encoding</code> ou <code>Content-Type</code>
+                  <li>Utilisez soit <code>Expires</code>, soit <code>Cache-Control: max-age</code>
+                  <li>avec soit <code>Last-Modified</code>, soit <code>ETag</code> <small>pour permettre les requêtes conditionnelles</small>
+                  <li>Idéalement, cachez pour un mois ou un an <small>(mais pas plus !)</small> et utiliser l’url fingerprinting
+                  <li>SSL/TLS : <code>Cache control: public</code> <small>(sinon, pas de cache sous FF)</small>
+                  <li>Attention aux paramètres dans les URL (proxies)
+                  <li>Limitez les cookies aux ressources qui ont en besoin <small>(html)</small>
+                  <li>Pas de cache public si cookie
+                  <li>Attention de bien configurer <code>Vary</code> en fonction du <code>Content-Encoding</code> ou <code>Content-Type</code> <small>(Négociation de contenu)</small>
                   <!-- 
                   https://developers.google.com/speed/docs/best-practices/caching
                   http://julien-pauli.developpez.com/tutoriels/web/http/?page=page_8#LVIII-B-4
                    -->
               </ul>
-              </section>
-          </div>
-
-          <div class="slide" id="partial-request-title-slide">
-              <section class="middle">
-              <h2>Réponse partielle</h2>
-              </section>
-          </div>
-          <div class="slide" id="partial-request-slide">
-              <section>
-              <h2>Réponse partielle</h2>
-              <ol>
-                  <li>Client <pre>GET / HTTP/1.1
-Host: www.exemple.org
-Accept-Ranges: bytes
-Content-Length: 384500
-Content-Type: video/mp4
-...</pre>
-                  <li>Serveur <pre>HTTP/1.1 200 OK
-Content-type: video/mp4
-Range: bytes=385000
- ...</pre>
-              </ol>
               </section>
           </div>
 
@@ -666,38 +705,36 @@ Range: bytes=385000
           <div class="slide" id="authentification-basic-slide">
               <section>
               <h2>Authenfication basique</h2>
-              <ol>
-                  <li>Client <pre>GET /private/index.html HTTP/1.1
+<pre class="client">GET /private/index.html HTTP/1.1
 Host: www.exemple.org
 ...</pre>
-              <li>Serveur <pre>HTTP/1.1 401 Authorization Required
+<pre class="server">HTTP/1.1 401 Authorization Required
 Content-type: text/html
 WWW-Authenticate: Basic realm="Secure Area"
 ...</pre>
-              <li>Client <pre>GET /private/index.html HTTP/1.1
+<pre class="client">GET /private/index.html HTTP/1.1
 Host: www.exemple.org
 Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
 </pre>
-            </ol>
-            <code>&gt; echo -n "Aladdin:open sesame" | base64 - 
-                &gt; QWxhZGRpbjpvcGVuIHNlc2FtZQ==
-                &gt; echo -n QWxhZGRpbjpvcGVuIHNlc2FtZQ== | base64 -D
-                &gt; Aladdin:open sesame
-            </code>
+<h3>Encodage/décodage base 64</h3>
+<kbd>&gt; echo -n "Aladdin:open sesame" | base64 -
+&gt; QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+&gt; echo -n QWxhZGRpbjpvcGVuIHNlc2FtZQ== | base64 -d
+&gt; Aladdin:open sesame
+</kbd>
             </section>
         </div>
         <div class="slide" id="authentification-digest-slide">
             <section>
             <h2>Authenfication Digest</h2>
-            <ol>
-<li>Serveur <pre>HTTP/1.1 401 Authorization Required
+<pre class="server">HTTP/1.1 401 Authorization Required
 Content-type: text/html
 WWW-Authenticate: Digest realm="testrealm@host.com",
 qop="auth, auth-int",
 nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093",
 opaque="5ccc069c403ebaf9f0171e9517f40e41"
 ...</pre>
-<li>Client <pre>GET /private/index.html HTTP/1.1
+<pre class="server">GET /private/index.html HTTP/1.1
 Host: www.exemple.org
 GET /dir/index.html HTTP/1.0
 Host: localhost
@@ -711,7 +748,6 @@ cnonce="0a4f113b",
 response="6629fae49393a05397450978507c4ef1",
 opaque="5ccc069c403ebaf9f0171e9517f40e41"
 </pre>
-            </ol>
         </section>
         </div>
 
