@@ -559,9 +559,9 @@ Content-Type: image/jpeg
           <div class="slide" id="cache-in-action-slide">
               <section>
               <h2>Cache : En Action</h2>
-              <h3>Chargement initial, sans cache :</h2>
+              <h3>Chargement initial, sans cache :</h3>
               <img src="imgs/twitter-1.png" alt="First twitter load" title="First twitter load" />
-              <h3>Rechargement de la même page :</h2>
+              <h3>Rechargement de la même page :</h3>
               <img src="imgs/twitter-2.png" alt="Second twitter load" title="Second twitter load" />
               </section>
           </div>
@@ -765,7 +765,7 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"
                   <li>TLS 1.1 en 2006 (<a href="https://tools.ietf.org/html/rfc4346">RFC 4346</a>)
                   <li>TLS 1.2 en 2008 (<a href="https://tools.ietf.org/html/rfc5246">RFC 5246</a>)
                   <li>Mise à jour sur TLS 1.2 en 2011 (<a href="https://tools.ietf.org/html/rfc6176">RFC 6176</a>)
-                  <li>TLS utilisé sur <abbr title"HyperText Transfert Protocol">HTTP</abbr>, <abbr title"File Transfert Protocol">FTP</abbr>, <abbr title"Simple Mail Transfert Protocol">SMTP</abbr>, <abbr title"Network News Transfert Protocol">NNTP</abbr> et <abbr title"eXtensible Messaging and Presence Protocol">XMPP</abbr>
+                  <li>TLS utilisé sur <abbr title="HyperText Transfert Protocol">HTTP</abbr>, <abbr title="File Transfert Protocol">FTP</abbr>, <abbr title="Simple Mail Transfert Protocol">SMTP</abbr>, <abbr title="Network News Transfert Protocol">NNTP</abbr> et <abbr title="eXtensible Messaging and Presence Protocol">XMPP</abbr>
                   <li><abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr> sur le port 443
               </ul>
               <h3>5 principes</h3>
@@ -807,7 +807,7 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"
                 <h3><a href="http://dev.chromium.org/sts"><abbr title="HTTP Strict Transport Security">HSTS</abbr></a></h3>
                 <pre>Strict-Transport-Security: max-age=16070400; includeSubDomains</pre>
                 <h3>Attaque connue</h3>
-                en 2011, Thai Duong and Juliano Rizzo démontre <abbr title="Browser Exploit Against SSL/TLS">BEAST</a>, une attaque contre TLS/1.0
+                en 2011, Thai Duong and Juliano Rizzo démontre <a href="http://vnhacker.blogspot.fr/2011/09/beast.html"><abbr title="Browser Exploit Against SSL/TLS">BEAST</abbr></a>, une attaque contre TLS/1.0
                 </section>
             </div>
 
@@ -853,17 +853,33 @@ Content-Length: xxxx
           </div>
           <div class="slide" id="spdy-slide">
               <section>
-              <h2>Speedy</h2>
-              <p>
-              <a href="chrome://net-internals/#spdy">chrome://net-internals/#spdy</a> (Chrome)
-              <a href="https://en.wikipedia.org/wiki/HTTP_pipelining">HTTP Pipelining</a>
-              </p>
+              <h2><abbr title="Speedy"><a href="https://sites.google.com/a/chromium.org/dev/spdy">SPDY</a></abbr></h2>
+              <ul>
+                  <li>standard de facto, standardisation en cours <small>(<a href="https://tools.ietf.org/html/draft-mbelshe-httpbis-spdy-00">draft-mbelshe-httpbis-spdy-00</a>)</small>
+                  <li>implémenté dans Google Chrome (<small><a href="chrome://net-internals/#spdy">chrome://net-internals/#spdy</a></small>) et Firefox 11 (<small><a href="https://hacks.mozilla.org/2012/02/spdy-brings-responsive-and-scalable-transport-to-firefox-11/">annonce</a></small>), actif par défaut dans Firefox 13 (<small><code>network.http.spdy.enabled</code>, cf <a href="about:config">about:config</a></small>) et Amazon Silk,
+                  <li>utilisé sur presque tous les services Google, ainsi que twitter,
+                  <li><img src="https://sites.google.com/a/chromium.org/dev/_/rsrc/1258490355439/spdy/spdy-whitepaper/soarjOjSeS5hoFYvjtAnxCg.png" alt="Speedy stack" style="float: right; margin: .5em;"/>
+                  ne remplace pas HTTP mais change la façon dont les données sont envoyées,
+                  <li>compression des entêtes,
+                  <li>suppression des entêtes redondants (user-agent, accept, etc),
+                  <li>multiplexage (plusieurs streams) au sein d’une requête TCP,
+                  <li>priorise les ressources,
+                  <li><a href="https://en.wikipedia.org/wiki/HTTP_pipelining">HTTP Pipelining</a>,
+                  <li>"push" des resources liés (images, css, js) avant que le navigateur ne les demande,
+                  <li>TLS/SSL obligatoire.
+              </ul>
               </section>
           </div>
           <div class="slide" id="http2-slide">
               <section>
               <h2>HTTP 2.0</h2>
-              <p></p>
+              <ul>
+                  <li>en cours de réflexion par le groupe <a href="https://tools.ietf.org/wg/httpbis/">Hypertext Transfer Protocol Bis</a> <small>(httpbis)</small>,
+                  <li>buts : multiplexage, compression des entête, pipelining,
+                  <li>rétro-compatibilité complète,
+                  <li>SPDY candidat pour HTTP/2.0,
+                  <li>Microsoft propose <a href="https://tools.ietf.org/html/draft-montenegro-httpbis-speed-mobility-01">HTTP Speed+Mobility</a> (basé sur SPDY).
+              </ul>
               </section>
           </div>
 
