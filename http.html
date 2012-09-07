@@ -183,7 +183,7 @@ Server: gws
                   <li>En 1991, devient HTTP/0.9
                   <li>En 1993, le <abbr title="National Center for Supercomputing Applications">NCSA</abbr> créé <a href="ftp://ftp.ncsa.uiuc.edu/Mosaic/">Mosaic</a> et <a href="http://httpd.apache.org/ABOUT_APACHE.html">HTTPd</a>
                   <li>En 1996, <a href="http://tools.ietf.org/html/rfc1945"><abbr title="Request for comment">RFC</abbr> 1945</a> : HTTP/1.0
-                  <li>En 1997, <a href="http://tools.ietf.org/html/rfc2068"><abbr title="Request for comment">RFC</abbr> 2068</a> : HTTP/1.1
+                  <li>En 1997, <a href="http://tools.ietf.org/html/rfc2068">RFC 2068</a> : HTTP/1.1
                   <li>En 2000, <a href="http://www.ics.uci.edu/~fielding/">Roy Fielding</a> publie sa thèse <a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Architectural Styles and the Design of Network-based Software Architectures</a> (<a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm"><abbr title="Representational state transfer">REST</abbr></a>)
                   <li><a href="http://www.w3.org/Protocols/">19 révisions</a> de HTTP/1.1 entre 2007 et 2012,
                   <li>En 2009, Google <a href="http://googleresearch.blogspot.com/2009/11/2x-faster-web.html">propose</a> <a href="http://www.chromium.org/spdy">SPDY</a>,
@@ -761,11 +761,12 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"
               <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Introduction</h2>
               <ul>
                   <li>SSL 1.0 (jamais publique), 2.0 en 1995,  3.0 en 1996 (<a href="https://tools.ietf.org/html/rfc6101"><abbr title="Request for comment">RFC</abbr> 6101</a>),
-                  <li>TLS 1.0 en 1999 (<a href="https://tools.ietf.org/html/rfc2246"><abbr title="Request for comment">RFC</abbr> 2246</a>)
-                  <li>TLS 1.1 en 2006 (<a href="https://tools.ietf.org/html/rfc4346"><abbr title="Request for comment">RFC</abbr> 4346</a>)
-                  <li>TLS 1.2 en 2008 (<a href="https://tools.ietf.org/html/rfc5246"><abbr title="Request for comment">RFC</abbr> 5246</a>)
-                  <li>Mise à jour sur TLS 1.2 en 2011 (<a href="https://tools.ietf.org/html/rfc6176"><abbr title="Request for comment">RFC</abbr> 6176</a>)
+                  <li>TLS 1.0 en 1999 (<a href="https://tools.ietf.org/html/rfc2246">RFC 2246</a>)
+                  <li>TLS 1.1 en 2006 (<a href="https://tools.ietf.org/html/rfc4346">RFC 4346</a>)
+                  <li>TLS 1.2 en 2008 (<a href="https://tools.ietf.org/html/rfc5246">RFC 5246</a>)
+                  <li>Mise à jour sur TLS 1.2 en 2011 (<a href="https://tools.ietf.org/html/rfc6176">RFC 6176</a>)
                   <li>TLS utilisé sur <abbr title"HyperText Transfert Protocol">HTTP</abbr>, <abbr title"File Transfert Protocol">FTP</abbr>, <abbr title"Simple Mail Transfert Protocol">SMTP</abbr>, <abbr title"Network News Transfert Protocol">NNTP</abbr> et <abbr title"eXtensible Messaging and Presence Protocol">XMPP</abbr>
+                  <li><abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr> sur le port 443
               </ul>
               <h3>5 principes</h3>
               <ul>
@@ -779,20 +780,27 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"
               </section>
           </div>
           <div class="slide" id="ssl-tls-handshake-slide">
-                <section>
-                <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Handshake</h2>
-                <img src="https://d1g3mdmxf8zbo9.cloudfront.net/images/benchs-ssl/ssl-handshake.png" alt="SSL/TLS handshake" width="400" style="float:right;" />
-                <ol>
-                    <li>Client hello : chiffrements supportés ordonnés, 32 bits aléatoire
-                    <li>Server hello : chiffrement utilisé, session Id, 32 bits aléatoire, certificat ;
-                    le client vérifie le certificat (chaîne de confiance)
-                    <li>le client envoie alors une pré-clé (chiffré avec la clé publique du serveur, asymétrique)
-                    <li>Server finished : chiffré avec une clé secrête symétrique (dérivée)
-                    <li>Client finished : chiffré avec une clé secrête symétrique (dérivée)
-                    <li>Échanges HTTP suivant chiffrés avec ces 2 clés
-                </ol>
-                </section>
-            </div>
+              <section>
+              <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Handshake</h2>
+              <img src="https://d1g3mdmxf8zbo9.cloudfront.net/images/benchs-ssl/ssl-handshake.png" alt="SSL/TLS handshake" width="400" style="float:right;" />
+              <ol>
+                  <li>Client hello : chiffrements supportés ordonnés, 32 bits aléatoire
+                  <li>Server hello : chiffrement utilisé, session Id, 32 bits aléatoire, certificat ;
+                  le client vérifie le certificat (chaîne de confiance)
+                  <li>le client envoie alors une pré-clé (chiffré avec la clé publique du serveur, asymétrique)
+                  <li>Server finished : chiffré avec une clé secrête symétrique (dérivée)
+                  <li>Client finished : chiffré avec une clé secrête symétrique (dérivée)
+                  <li>Échanges HTTP suivant chiffrés avec ces 2 clés
+              </ol>
+              </section>
+          </div>
+          <div class="slide" id="ssl-tls-diffie-hellman-slide">
+              <section>
+              <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Diffie-Hellman</h2>
+              <a href="http://vincent.bernat.im/en/blog/2011-ssl-perfect-forward-secrecy.html">SSL/TLS & Perfect Forward Secrecy</a> <small>DHE-RSA-AES128-SHA, ECDHE-RSA-AES128-SHA</small>
+              <p class="center"><img src="imgs/diffie-Hellman_key_exchange.png" alt="Algorithme de Diffie Hellman" /></p>
+              </section>
+          </div>
           <div class="slide" id="ssl-tls-security-slide">
                 <section>
                 <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Securité</h2>
@@ -811,10 +819,30 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"
          </div>
           <div class="slide" id="extension-slide">
               <section>
-              <h2>Extension</h2>
-              <p></p>
-              <h3>WebDAV</h3>
-              <p></p>
+              <h2>Extension : <abbr title="Web Distributed Authoring and Versioning">WebDAV</abbr></h2>
+              <ul>
+                  <li>permet de récupérer, déposer, synchroniser et publier des fichiers/dossiers,
+                  <li>gestion des droits d’accés, vérrouillage des fichiers,
+                  <li>Nouvelles méthodes, entêtes et codes de retour (<small><a href="//tools.ietf.org/html/rfc4918"><abbr title="Request for comment">RFC</abbr> 4918</a></small>) : 
+              </ul>
+<pre class="client">COPY /~fielding/index.html HTTP/1.1 
+Host: www.example.com 
+Destination: http://www.example.com/users/f/fielding/index.html 
+If: &lt;http://www.example.com/users/f/fielding/index.html&gt; (&lt;urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6&gt;)</pre>
+<pre class="server">HTTP/1.1 204 No Content</pre>
+<pre class="client">DELETE /locked/member HTTP/1.1
+Host: example.com</pre>
+<pre class="server">HTTP/1.1 423 Locked
+Content-Type: application/xml; charset="utf-8"
+Content-Length: xxxx
+
+&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;D:error xmlns:D="DAV:"&gt;
+&lt;D:lock-token-submitted&gt;
+&lt;D:href&gt;/locked/&lt;/D:href&gt;
+&lt;/D:lock-token-submitted&gt;
+&lt;/D:error&gt;
+</pre>
               </section>
           </div>
 
