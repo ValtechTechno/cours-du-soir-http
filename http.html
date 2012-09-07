@@ -103,9 +103,9 @@ Brad Neuberg
                         <li>Verbes
                         <li>Codes de retour
                         <li>Cookies
-                        <li>Négotiation de contenu
-                        <li>Cache
+                        <li>Négociation de contenu
                         <li>Plage de réponse et réponse partielle
+                        <li>Cache
                         <li>Authentification
                         <li>SSL/TLS
                         <li>Extensions (WebDAV,...)
@@ -184,7 +184,7 @@ Server: gws
                   <li>En 1993, le <abbr title="National Center for Supercomputing Applications">NCSA</abbr> créé <a href="ftp://ftp.ncsa.uiuc.edu/Mosaic/">Mosaic</a> et <a href="http://httpd.apache.org/ABOUT_APACHE.html">HTTPd</a>
                   <li>En 1996, <a href="http://tools.ietf.org/html/rfc1945"><abbr title="Request for comment">RFC</abbr> 1945</a> : HTTP/1.0
                   <li>En 1997, <a href="http://tools.ietf.org/html/rfc2068">RFC 2068</a> : HTTP/1.1
-                  <li>En 2000, <a href="http://www.ics.uci.edu/~fielding/">Roy Fielding</a> publie sa thèse <a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Architectural Styles and the Design of Network-based Software Architectures</a> (<a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm"><abbr title="Representational state transfer">REST</abbr></a>)
+                  <li>En 2000, <a href="http://www.ics.uci.edu/~fielding/">Roy Fielding</a> publie sa thèse <a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Architectural Styles and the Design of Network-based Software Architectures</a><br>(<a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm"><abbr title="Representational state transfer">REST</abbr></a>)
                   <li><a href="http://www.w3.org/Protocols/">19 révisions</a> de HTTP/1.1 entre 2007 et 2012,
                   <li>En 2009, Google <a href="http://googleresearch.blogspot.com/2009/11/2x-faster-web.html">propose</a> <a href="http://www.chromium.org/spdy">SPDY</a>,
                   <li>En 2012, le groupe de travail <a href="https://tools.ietf.org/wg/httpbis/">httpbis</a> de l’<a href="https://ietf.org/"><abbr title="Internet Engineering Task Force">IETF</abbr></a> planche sur HTTP 2.0
@@ -248,7 +248,7 @@ Server: gws
                   <li>en 1996, <a href="http://tools.ietf.org/html/rfc1945"><abbr title="Request for comment">RFC</abbr> 1945</a>
                   <li>verbe GET, POST, HEAD mais aussi PUT, DELETE, LINK, UNLINK
                   <li>standardisation des entêtes, du formatage des réponses, des codes d’erreurs
-                  <li>cache côté client via les en‐têtes Last-modified, Pragma, Expires et la compression
+                  <li>cache côté client via les en‐têtes <code>Last-modified</code>, <code>Pragma</code>, <code>Expires</code> et la compression
               </ul>
               </section>
           </div>
@@ -258,10 +258,10 @@ Server: gws
               <ul>
                   <li>En 1997, <a href="http://tools.ietf.org/html/rfc2068"><abbr title="Request for comment">RFC</abbr> 2068</a> : HTTP/1.1
                   <li>OPTIONS, CONNECT et TRACE (<del>LINK</del>, <del>UNLINK</del>),
-                  <li>en-tête Host obligatoire
-                  <li>négociation de contenu et de langage (Accept, Accept-Language, Accept-Charset)
-                  <li>pipelining via l’entête Connection: Keepalive 
-                  <li>découpe de la réponse en plusieurs morceaux via Transfer-Encoding: chunked
+                  <li>en-tête <code>Host</code> obligatoire
+                  <li>négociation de contenu et de langage (<code>Accept</code>, <code>Accept-Language</code>, <code>Accept-Charset</code>)
+                  <li>pipelining via l’entête <code>Connection: Keepalive</code>
+                  <li>découpe de la réponse en plusieurs morceaux via <code>Transfer-Encoding: chunked</code>
                   <li><a href="http://www.w3.org/Protocols/">19 révisions</a> entre 2007 et 2012
               </ul>
               </section>
@@ -472,7 +472,7 @@ Set-Cookie: PREF=ID=5e66ffd215b4c5e6:TM=1147099841:LM=1147099841:S=Of69MpWBs23xe
               <p>Démo sur <a href="http://blog.valtech.fr/wp-login">blog.valtech.fr</a> avec <a href="http://livehttpheaders.mozdev.org/">LiveHTTPHeaders</a> et telnet</p>
               <h3>Via Firesheep</h3>
               <p><a href="http://codebutler.com/firesheep?c=1"><img src="imgs/firesheep.png" alt="Firesheep" title="Firesheep" /></a></p>
-              <h2>Forge de cookie (cookie poisoning)</h2>
+              <h2>Forge de cookie</h2>
               </section>
           </div>
 
@@ -611,7 +611,7 @@ Expires: Thu, 01 Dec 1994 16:00:00 GMT</pre>
                   <li><code>Cache-Control: no-store</code> : Cache client ou proxy interdit
                   <li><code>Cache-Control: must-revalidate</code> : Revalidation après expiration
                   <li><code>Cache-Control: proxy-revalidate</code> : Idem mais pour les proxies
-                  <li><code>Cache-Control: max-age=xxx</code> : Temps relatif
+                  <li><code>Cache-Control: max-age=xxx</code> : Temps relatif, en secondes
                   <li><code>Cache-Control: s-maxage=xxx</code> : Idem mais que pour les proxies
                   <li><code>Cache-Control: no-transform</code> : Les proxies ne doivent pas transformer la ressource
               </ul>
@@ -657,29 +657,31 @@ ETag: "8eca4-205f-17b94c"
           <div class="slide" id="cache-vary-slide">
               <section>
               <h2>Cache : Vary</h2>
+<h3>Exemple sur la compression :</h3>
 <pre class="client">GET /file.js HTTP/1.1
+Accept-Encoding: gzip, deflate
 ...</pre>
 <pre class="server">HTTP/1.1 200 OK
 Content-Encoding:gzip
-...
 Date:Thu, 06 Sep 2012 13:56:47 GMT
 Expires:Thu, 13 Sep 2012 13:56:47 GMT
 ETag:M0-0eb75f26
 Vary:Accept-Encoding
 ...</pre>
-Autre exemple :
-<pre class="client">GET /file HTTP/1.1
-...</pre>
+<h3>Exemple sur la négociation de contenu :</h3>
+<pre class="client">GET /shops/all/address HTTP/1.1
+Host: www.exemple.org
+Accept: application/json
+... </pre>
 <pre class="server">HTTP/1.1 200 OK
-Set-Cookie: key=value
-...
-Vary:Cookie
-...</pre>
+Content-type: application/json; charset=utf-8
+Vary: Accept
+ ...</pre>
             </section>
           </div>
           <div class="slide" id="cache-summary-slide">
               <section>
-              <h2>Cache : Résumé</h2>
+              <h2>Cache : Recommandations</h2>
               <ul>
                   <li>Utilisez soit <code>Expires</code>, soit <code>Cache-Control: max-age</code>
                   <li>avec soit <code>Last-Modified</code>, soit <code>ETag</code> <small>pour permettre les requêtes conditionnelles</small>
@@ -687,7 +689,7 @@ Vary:Cookie
                   <li>SSL/TLS : <code>Cache control: public</code> <small>(sinon, pas de cache sous FF)</small>
                   <li>Attention aux paramètres dans les URL (proxies)
                   <li>Limitez les cookies aux ressources qui ont en besoin <small>(html)</small>
-                  <li>Pas de cache public si cookie
+                  <li>Rappel : ressources statiques sur un autre sous-domaine
                   <li>Attention de bien configurer <code>Vary</code> en fonction du <code>Content-Encoding</code> ou <code>Content-Type</code> <small>(Négociation de contenu)</small>
                   <!-- 
                   https://developers.google.com/speed/docs/best-practices/caching
@@ -780,24 +782,91 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"
               </section>
           </div>
           <div class="slide" id="ssl-tls-handshake-slide">
+              <style scoped>
+              #ssl-tls-handshake-slide ul li { list-style-type:none; }
+              </style>
               <section>
               <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Handshake</h2>
-              <img src="https://d1g3mdmxf8zbo9.cloudfront.net/images/benchs-ssl/ssl-handshake.png" alt="SSL/TLS handshake" width="400" style="float:right;" />
-              <ol>
-                  <li>Client hello : chiffrements supportés ordonnés, 32 bits aléatoire
-                  <li>Server hello : chiffrement utilisé, session Id, 32 bits aléatoire, certificat ;
-                  le client vérifie le certificat (chaîne de confiance)
-                  <li>le client envoie alors une pré-clé (chiffré avec la clé publique du serveur, asymétrique)
-                  <li>Server finished : chiffré avec une clé secrête symétrique (dérivée)
-                  <li>Client finished : chiffré avec une clé secrête symétrique (dérivée)
-                  <li>Échanges HTTP suivant chiffrés avec ces 2 clés
-              </ol>
+              <img src="https://docs.google.com/drawings/pub?id=1kpEunBK1rm_KH-loMb2K0OKCEut4A0tP08fF1e5_-OM&amp;w=796&amp;h=362" alt="SSL/TLS handshake" />
+              <ul>
+                  <li><span style="color: blue;">1.</span> Client hello : chiffrements supportés ordonnés
+                  <li><span style="color: blue;">2.</span> Server hello : chiffrement utilisé et certificat
+                  <small>(le client vérifie le certificat et la chaîne de confiance)</small>
+                  <li><span style="color: red;">3.</span> Pré-clé chiffrée avec la clé publique du serveur
+                  <li><span style="color: green;">4.</span> Chiffré avec une clé secrête symétrique dérivée
+                  <li><span style="color: green;">5.</span> Échanges HTTP suivant chiffrés avec la clé symétrique dérivée
+              </ul>
+              </section>
+          </div>
+          <div class="slide" id="ssl-tls-algorithms-slide">
+            <style scoped>
+            #ssl-tls-algorithms-slide ul { column-count: 3; }
+            #ssl-tls-algorithms-slide ul li { font-size: 13px; }
+            </style>
+              <section>
+              <h2>Algorithmes d’encryption</h2>
+              <p>Version, chiffrement asymétrique, chiffrement symétrique, négociation des clés, signature</p>
+              <ul>
+                <li>SSL2-RC4-128-with-MD5
+                <li>SSL2-RC2-128-CBC-with-MD5
+                <li>SSL2-DES-168-EDE3-CBC-with-MD5
+                <li>SSL2-DES-56-CBC-with-MD5
+                <li>SSL2-RC4-128-EXPORT40-with-MD5
+                <li>SSL2-RC2-128-CBC-EXPORT40-with-MD5
+                <li>SSL3-FORTEZZA-DMS-with-FORTEZZA-CBC-SHA
+                <li>SSL3-FORTEZZA-DMS-with-RC4-128-SHA
+                <li>SSL3-RSA-with-RC4-128-MD5
+                <li>SSL3-RSA-with-3DES-EDE-CBC-SHA
+                <li>SSL3-RSA-with-DES-CBC-SHA
+                <li>SSL3-RSA-with-RC4-40-MD5
+                <li>SSL3-RSA-with-RC2-CBC-40-MD5
+                <li>SSL3-FORTEZZA-DMS-with-null-SHA
+                <li>SSL3-RSA-with-null-MD5
+                <li>SSL3-RSA-FIPS-with-3DES-EDE--CBC-SHA
+                <li>SSL3-RSA-FIPS-with-DES-CBC-SHA
+                <li>SSL3-DHE-RSA-with-3DES-EDE-CBC-SHA
+                <li>SSL3-DHE-DSS-with-3DES-EDE-CBC-SHA
+                <li>SSL3-DHE-RSA-with-DES-CBC-SHA
+                <li>SSL3-DHE-DSS-with-DES-CBC-SHA
+                <li>TLS-RSA-1024-with-RC4-56-SHA
+                <li>TLS-RSA-1024-with-DES-CBC-SHA
+                <li>TLS-RSA-with-RC4-128-MD5
+                <li>SSL_RSA_WITH_RC4_128_SHA or TLS_RSA_WITH_RC4_128_SHA
+                <li>TLS-RSA-with-3DES-EDE-CBC-SHA
+                <li>TLS-RSA-with-DES-CBC-SHA
+                <li>TLS-RSA-with-AES-256-CBC-SHA
+                <li>TLS-RSA-with-AES-128-CBC-SHA
+                <li>TLS-RSA-with-RC4-40-MD5
+                <li>TLS-RSA-with-RC2-CBC-40-MD5
+                <li>TLS-RSA-with-null-MD5
+                <li>TLS-DHE-RSA-with-AES-256-CBC-SHA
+                <li>TLS-DHE-RSA-with-AES-128-CBC-SHA
+                <li>TLS-DHE-DSS-with-AES-256-CBC-SHA
+                <li>TLS-DHE-DSS-with-AES-128-CBC-SHA
+                <li>TLS-DHE-DSS-with-RC4-128-SHA
+                <li>TLS-ECDH-ECDSA-with-RC4-128-SHA
+                <li>TLS-ECDH-RSA-with-RC4-128-SHA
+                <li>TLS-ECDHE-ECDSA-with-RC4-128-SHA
+                <li>TLS-ECDHE-RSA-with-RC4-128-SHA
+                <li>TLS-ECDH-ECDSA-with-3DES-EDE-CBC-SHA
+                <li>TLS-ECDH-RSA-with-3DES-EDE-CBC-SHA
+                <li>TLS-ECDHE-ECDSA-with-3DES-EDE-CBC-SHA
+                <li>TLS-ECDHE-RSA-with-3DES-EDE-CBC-SHA
+                <li>TLS-ECDH-ECDSA-with-AES-128-CBC-SHA
+                <li>TLS-ECDH-RSA-with-AES-128-CBC-SHA
+                <li>TLS-ECDHE-ECDSA-with-AES-128-CBC-SHA
+                <li>TLS-ECDHE-RSA-with-AES-128-CBC-SHA
+                <li>TLS-ECDH-ECDSA-with-AES-256-CBC-SHA
+                <li>TLS-ECDH-RSA-with-AES-256-CBC-SHA
+                <li>TLS-ECDHE-ECDSA-with-AES-256-CBC-SHA
+                <li>TLS-ECDHE-RSA-with-AES-256-CBC-SHA
+              </ul>
               </section>
           </div>
           <div class="slide" id="ssl-tls-diffie-hellman-slide">
               <section>
               <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Diffie-Hellman</h2>
-              <a href="http://vincent.bernat.im/en/blog/2011-ssl-perfect-forward-secrecy.html">SSL/TLS & Perfect Forward Secrecy</a> <small>DHE-RSA-AES128-SHA, ECDHE-RSA-AES128-SHA</small>
+              <a href="http://vincent.bernat.im/en/blog/2011-ssl-perfect-forward-secrecy.html">SSL/TLS & Perfect Forward Secrecy</a>, <small>DHE-RSA-AES128-SHA, ECDHE-RSA-AES128-SHA</small>
               <p class="center"><img src="imgs/diffie-Hellman_key_exchange.png" alt="Algorithme de Diffie Hellman" /></p>
               </section>
           </div>
