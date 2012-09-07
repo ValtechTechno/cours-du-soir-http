@@ -781,15 +781,25 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"
           <div class="slide" id="ssl-tls-handshake-slide">
                 <section>
                 <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Handshake</h2>
+                <img src="https://d1g3mdmxf8zbo9.cloudfront.net/images/benchs-ssl/ssl-handshake.png" alt="SSL/TLS handshake" width="400" style="float:right;" />
+                <ol>
+                    <li>Client hello : chiffrements supportés ordonnés, 32 bits aléatoire
+                    <li>Server hello : chiffrement utilisé, session Id, 32 bits aléatoire, certificat ;
+                    le client vérifie le certificat (chaîne de confiance)
+                    <li>le client envoie alors une pré-clé (chiffré avec la clé publique du serveur, asymétrique)
+                    <li>Server finished : chiffré avec une clé secrête symétrique (dérivée)
+                    <li>Client finished : chiffré avec une clé secrête symétrique (dérivée)
+                    <li>Échanges HTTP suivant chiffrés avec ces 2 clés
+                </ol>
                 </section>
             </div>
           <div class="slide" id="ssl-tls-security-slide">
                 <section>
                 <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Securité</h2>
-                <ul>
-                    <li><a href="http://dev.chromium.org/sts"><abbr title="HTTP Strict Transport Security">HSTS</abbr></a> is HTTPS Strict Transport Security: a way for sites to elect to always use HTTPS
-                    <li>en 2011, Thai Duong and Juliano Rizzo démontre <abbr title="Browser Exploit Against SSL/TLS">BEAST</a>, une attaque contre TLS/1.0
-                </ul>
+                <h3><a href="http://dev.chromium.org/sts"><abbr title="HTTP Strict Transport Security">HSTS</abbr></a></h3>
+                <pre>Strict-Transport-Security: max-age=16070400; includeSubDomains</pre>
+                <h3>Attaque connue</h3>
+                en 2011, Thai Duong and Juliano Rizzo démontre <abbr title="Browser Exploit Against SSL/TLS">BEAST</a>, une attaque contre TLS/1.0
                 </section>
             </div>
 
