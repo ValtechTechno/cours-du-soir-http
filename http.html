@@ -701,11 +701,7 @@ Vary: Accept
                   <li>Attention aux paramètres dans les URL (proxies)
                   <li>Limitez les cookies aux ressources qui ont en besoin <small>(html)</small>
                   <li>Rappel : ressources statiques sur un autre sous-domaine
-                  <li>Attention de bien configurer <code>Vary</code> en fonction du <code>Content-Encoding</code> ou <code>Content-Type</code> <small>(Négociation de contenu)</small>
-                  <!-- 
-                  https://developers.google.com/speed/docs/best-practices/caching
-                  http://julien-pauli.developpez.com/tutoriels/web/http/?page=page_8#LVIII-B-4
-                   -->
+                  <li>Attention de bien configurer <code>Vary</code> en fonction du <code>Content-Encoding</code>, <code>Content-Type</code> ou encore sur les champs <code>Accept</code> <small>(Négociation de contenu)</small>
               </ul>
               </section>
           </div>
@@ -804,8 +800,8 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"
                   <li><span style="color: blue;">2.</span> Server hello : chiffrement utilisé et certificat
                   <small>(le client vérifie le certificat et la chaîne de confiance)</small>
                   <li><span style="color: red;">3.</span> Pré-clé chiffrée avec la clé publique du serveur
-                  <li><span style="color: green;">4.</span> Chiffré avec une clé secrête symétrique dérivée
-                  <li><span style="color: green;">5.</span> Échanges HTTP suivant chiffrés avec la clé symétrique dérivée
+                  <li><span style="color: green;">4.</span> Négociation terminée, calcul de la clé secrête symétrique
+                  <li><span style="color: green;">5.</span> Échanges HTTP chiffrés avec la clé symétrique
               </ul>
               </section>
           </div>
