@@ -135,9 +135,13 @@ Brad Neuberg
                 <div class="slide" id="overview-example-slide">
                     <section>
                     <h2>HTTP à la main</h2>
-                    <pre>➜  ~  telnet www.google.fr 80 
-Trying 209.85.148.99...
-Connected to www.l.google.com.
+                    <pre>➜  ~  ping www.google.fr
+PING www.google.fr (74.125.230.247) 56(84) bytes of data.
+...
+^C
+➜  ~  telnet 74.125.230.247 80 
+Trying 74.125.230.247...
+Connected to 74.125.230.247.
 Escape character is '^]'.
 GET / HTTP/1.1
 Host: www.google.fr
