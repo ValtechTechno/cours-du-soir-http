@@ -525,10 +525,10 @@ Content-Language: en-US
               <h3>Client d’API REST</h3>
 <pre class="client">GET /shops/all/address HTTP/1.1
 Host: www.exemple.org
-Accept: application/json
-Accept-Charset: utf-8
-Accept-Encoding: gzip, deflate
-Accept-Language: fr-FR
+Accept: application/json; q=1.0, text/xml; q=0.8
+Accept-Charset: ISO-8859-1,utf-8; q=0.7, *; q=0.3
+Accept-Encoding: gzip,deflate
+Accept-Language: fr-FR; q=1.0, en; q=0.5
 ... </pre>
 <pre class="server">HTTP/1.1 200 OK
 Content-Encoding: gzip
@@ -691,10 +691,12 @@ Vary:Accept-Encoding
 <pre class="client">GET /shops/all/address HTTP/1.1
 Host: www.exemple.org
 Accept: application/json
+Accept-Language: fr-FR; q=1.0, en; q=0.5
 ... </pre>
 <pre class="server">HTTP/1.1 200 OK
 Content-type: application/json; charset=utf-8
-Vary: Accept
+Content-Language: en-US
+Vary: Accept,Accept-Language
  ...</pre>
             </section>
           </div>
