@@ -237,6 +237,7 @@ Server: gws
                   <li>n’est pas figé, constantes évolutions
                   <li>en cours de développement dans les années 91~95
                   <li>un seul verbe : GET
+                  <li>port 80 par défaut
                   <li>introduit le concept d’URI
                   <li>introduit le code de retour (status code)
                   <li>puis l’entête content-type
@@ -439,7 +440,10 @@ Cookie: name=value
                   <li>Défini pour un nom de domaine complet par défaut <small>(www.domain.com)</small>
                   <li>limité à 20 cookies par domaine, d’environ 4000 caractères
                   <li>Envoyé à chaque requête <small>(html, JS, Ajax, images, etc)</small>
-                  <li>Les cookies empêchent, par défaut, aux serveurs proxy de cacher les requêtes d’où l’intérêt de servir les ressources communes à tous les clients <small>(images, css, js)</small> depuis un autre domaine <small>(static.domain.com)</small>
+                  <li>Cookie = contenu personalisé = pas de cache
+                  <li>D’où l’intérêt de servir les ressources communes <small>(images, css, js)</small> depuis un autre sous-domaine <small>(static.domain.com)</small>
+                  <li>Cookie de session
+                  <li>Cookie chiffré
                   <li>Entête <a href="https://fr.wikipedia.org/wiki/P3P"><abbr title="Platform for Privacy Preferences">P3P</abbr></a>
                   <li>Entête <a href="https://fr.wikipedia.org/wiki/Do_Not_Track"><abbr title="Do Not Track">DNT</abbr></a>
               </ul>
@@ -449,12 +453,10 @@ Cookie: name=value
           <div class="slide" id="cookie-first-third-party-slide">
              <section>
              <h2>Les Cookies</h2>
-             <p align="center"><img src="https://docs.google.com/drawings/pub?id=1ZGi5Yuf_PmyIrP_WoxAjnq2NdQUg3H3TMpXVJFiP0Hw&amp;w=430&amp;h=399" title="First / third party cookie" alt=""/></p>
              <ul>
                  <li>Cookie "first/third party"
-                 <li>Cookie de session
-                 <li>Cookie chiffré
              </ul>
+             <p align="center"><img src="https://docs.google.com/drawings/pub?id=1ZGi5Yuf_PmyIrP_WoxAjnq2NdQUg3H3TMpXVJFiP0Hw&amp;w=430&amp;h=399" title="First / third party cookie" alt=""/></p>
              </section>
           </div>
 
@@ -463,13 +465,13 @@ Cookie: name=value
               <section>
               <h2>Les Cookies : attributs facultatifs</h2>
               <ul>
-                  <li>date d'expiration <small>(sans, le cookie est supprimé lorsque le navigateur est fermé)</small>,
                   <li>un nom de domaine <small>(pour permettre le "cross-subdomain")</small>,
                   <li>un chemin,
-                  <li>type d’accès (HTTP seul ou aussi via JS),
-                  <li>type de connexion prévu <small>(chiffrée ou non)</small>.
+                  <li>date d'expiration <small>(sans, le cookie est supprimé lorsque le navigateur est fermé)</small>,
+                  <li>type de connexion prévu <small>(chiffrée ou non)</small>,
+                  <li>type d’accès <small>(HTTP seul ou aussi via JS)</small>.
               </ul>
-              <h3>Exemple</h3>
+              <h3>Exemples</h3>
 <pre class="server">Set-Cookie: LSID=DQAAAK…Eaem_vYg; Domain=docs.foo.com; Path=/accounts; Expires=Wed, 13-Jan-2021 22:23:01 GMT; Secure; HttpOnly</pre>
 <pre class="server">Set-Cookie: HSID=AYQEVn….DKrdst; Domain=.foo.com; Path=/; Expires=Wed, 13-Jan-2021 22:23:01 GMT; HttpOnly</pre>
 <pre class="server">Set-Cookie: SSID=Ap4P….GTEq; Domain=.foo.com; Path=/; Expires=Wed, 13-Jan-2021 22:23:01 GMT; Secure; HttpOnly</pre>
@@ -596,8 +598,9 @@ Content-Type: image/jpeg
                   <li>Cache privé
                   <li>Cache publique
               </ul>
-              <h3>Vocabulaire :</h3>
+              <h3>Définitions :</h3>
               <ul>
+                  <li>Revalidation
                   <li>Cache hit
                   <li>Cache miss
               </ul>
@@ -805,7 +808,7 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"
                   <li><span style="color: blue;">2.</span> Server hello : chiffrement utilisé et certificat
                   <small>(le client vérifie le certificat et la chaîne de confiance)</small>
                   <li><span style="color: red;">3.</span> Pré-clé chiffrée avec la clé publique du serveur
-                  <li><span style="color: green;">4.</span> Négociation terminée, calcul de la clé secrête symétrique
+                  <li><span>4.</span> Négociation terminée, calcul de la clé secrête symétrique
                   <li><span style="color: green;">5.</span> Échanges HTTP chiffrés avec la clé symétrique
               </ul>
               </section>
