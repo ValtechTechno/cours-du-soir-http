@@ -124,13 +124,13 @@ Brad Neuberg
                 <div class="slide" id="overview-model-slide">
                     <section>
                     <h2>Modèle OSI</h2>
-                    <p class="center"><img src="https://docs.google.com/drawings/pub?id=13JohKX0LOXs74gu-DB8gKaSY_OIB050vX14_lKBp_HQ&amp;w=574&amp;h=448" title="Couches réseau" alt="Couches réseau" /></p>
+                    <p class="center"><img src="imgs/tcp-ip-stack.png" title="Couches réseau" alt="Couches réseau" /></p>
                     </section>
                 </div>
                 <div class="slide" id="network-diagram-slide">
                     <section>
                     <h2>Illustration</h2>
-                    <p class="center"><img src="https://docs.google.com/drawings/pub?id=1ggKV4njxl4zbp3ASytetj2zgf2jM22acs5B1XZOoU24&amp;w=960&amp;h=720" title="Diagramme réseau HTTP" alt="Diagramme réseau HTTP" /></p>
+                    <p class="center"><img src="imgs/illustration.png" title="Diagramme réseau HTTP" alt="Diagramme réseau HTTP" /></p>
                     </section>
                 </div>
                 <div class="slide" id="overview-example-slide">
@@ -168,7 +168,7 @@ Server: gws
           <div class="slide" id="request-diagram-slide">
               <section>
               <h2>Séquence</h2>
-              <p class="center"><img src="https://docs.google.com/drawings/pub?id=1Q_bxxPigoJG1iQlL8lBQOjzv-zqw7UiSd05Q8z3gnuE&amp;w=880&amp;h=600" title="Diagramme requête HTTP" alt="Diagramme requête HTTP" /></p>
+              <p class="center"><img src="imgs/http-sequence.png" title="Diagramme requête HTTP" alt="Diagramme requête HTTP" /></p>
               </section>
           </div>
 
@@ -415,7 +415,7 @@ Server: gws
           <div class="slide" id="cookie-title-slide">
               <section class="middle">
               <h2>Les Cookies</h2>
-              <a href="http://www.instructables.com/id/HTTP-Sugar-Cookies/"><img src="http://www.instructables.com/files/deriv/FWM/8RMH/GX82ORQY/FWM8RMHGX82ORQY.LARGE.jpg" width="600" alt="" title="Image from http://www.instructables.com/id/HTTP-Sugar-Cookies/" /></a>
+              <a href="http://www.instructables.com/id/HTTP-Sugar-Cookies/"><img src="imgs/cookies.jpg" width="600" alt="" title="Image from http://www.instructables.com/id/HTTP-Sugar-Cookies/" /></a>
               </section>
           </div>
           <div class="slide" id="cookie-example-slide">
@@ -458,7 +458,7 @@ Cookie: name=value
              <ul>
                  <li>Cookie "first/third party"
              </ul>
-             <p align="center"><img src="https://docs.google.com/drawings/pub?id=1ZGi5Yuf_PmyIrP_WoxAjnq2NdQUg3H3TMpXVJFiP0Hw&amp;w=430&amp;h=399" title="First / third party cookie" alt=""/></p>
+             <p align="center"><img src="imgs/cookie-parties.png" title="First / third party cookie" alt=""/></p>
              </section>
           </div>
 
@@ -808,7 +808,7 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"
                 <li>Chiffrement asymétrique <small>(RSA)</small>
                 <li>Fonction de hashage <small>(MD5, SHA1, SHA256,...)</small>
                 <li>Signature
-                <img style="float:right" src="https://docs.google.com/drawings/pub?id=1IScYN4qTqqQCkpZ1GTeK8vTO26pMso7rRj-UMBH6Cwc&amp;w=343&amp;h=283">
+                <img style="float:right" src="imgs/ssl-ca.png">
                 <li>Certificats <small>(x509)</small>
                 <li>Autorité de certification
                 <li>Chaînes de confiance
@@ -828,7 +828,7 @@ return hash == uncryptedSignature</pre>
               </style>
               <section>
               <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Handshake</h2>
-              <img src="https://docs.google.com/drawings/pub?id=1kpEunBK1rm_KH-loMb2K0OKCEut4A0tP08fF1e5_-OM&amp;w=796&amp;h=362" alt="SSL/TLS handshake" />
+              <img src="imgs/ssl-sequence.png" alt="SSL/TLS handshake" />
               <ul>
                   <li><span style="color: blue;">1.</span> Client hello : chiffrements supportés ordonnés
                   <li><span style="color: blue;">2.</span> Server hello : chiffrement utilisé et certificat
@@ -918,7 +918,7 @@ return hash == uncryptedSignature</pre>
                 <pre>Strict-Transport-Security: max-age=16070400; includeSubDomains</pre>
                 <h3>Attaques connues</h3>
                 <p>En 2011, Thai Duong et Juliano Rizzo démontrent <a href="http://vnhacker.blogspot.fr/2011/09/beast.html"><abbr title="Browser Exploit Against SSL/TLS">BEAST</abbr></a>, une attaque contre TLS/1.0.</p>
-                <p>En 2012, ils présentent <a href="https://docs.google.com/presentation/d/11eBmGiHbYcHR9gL5nDyZChu_-lCa2GizeuOfaLU2HOU/edit#slide=id.g1d134dff_1_222"><abbr title="Compression Ratio Info-leak Made Easy">CRIME</abbr></a>, se basant sur la compression : TLS et SPDY sont vulnérables.</p>
+                <p>En 2012, ils présentent <a href="imgs/spdy.png"><abbr title="Compression Ratio Info-leak Made Easy">CRIME</abbr></a>, se basant sur la compression : TLS et SPDY sont vulnérables.</p>
                 </section>
             </div>
 
