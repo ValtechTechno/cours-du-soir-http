@@ -266,10 +266,9 @@ Server: gws
                   <li>OPTIONS, CONNECT et TRACE (<del>LINK</del>, <del>UNLINK</del>)
                   <li>en-tête <code>Host</code> obligatoire <small>(permettant plusieurs sites web depuis une même IP)</small>
                   <li>négociation de contenu et de langage (<code>Accept</code>, <code>Accept-Language</code>, <code>Accept-Charset</code>)<small>, un pas en avant vers REST</small>
-                  <li>pipelining via l’entête <code>Connection: Keepalive</code>
+                  <li><img src="imgs/pipeline.png" alt="HTTP Pipelining" style="float:right; width:400px; border: 1px solid black;" /><code>Connection: keep-alive</code> permettant le pipelining
                   <li>découpe de la réponse en plusieurs morceaux via <code>Transfer-Encoding: chunked</code> <small>(un exemple est l’usage "temps réel" tel que les premiers chats)</small>
-                  <li><a href="http://www.w3.org/Protocols/">19 révisions</a> entre 2007 et 2012
-                  <li>des ajouts divers tels que <a href="http://www.w3.org/TR/CSP/">Content Security Policy</a>
+                  <li><a href="http://www.w3.org/Protocols/">19 révisions</a> entre 2007 et 2012 et des ajouts divers tels que <a href="http://www.w3.org/TR/CSP/">Content Security Policy</a>
               </ul>
               </section>
           </div>
